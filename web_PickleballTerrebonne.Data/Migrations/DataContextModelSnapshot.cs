@@ -17,27 +17,6 @@ namespace web_PickleballTerrebonne.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.20");
 
-            modelBuilder.Entity("web_PickleballTerrebonne.Data.Entites.EntreeListeAttente", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("CookieId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Statut")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("Timestamp")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("EntreesListeAttente");
-                });
-
             modelBuilder.Entity("web_PickleballTerrebonne.Data.Entites.Inscription", b =>
                 {
                     b.Property<int>("Id")

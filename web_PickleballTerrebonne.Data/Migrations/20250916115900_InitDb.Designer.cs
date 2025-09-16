@@ -11,7 +11,7 @@ using web_PickleballTerrebonne.Data.Contexts;
 namespace web_PickleballTerrebonne.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250914085821_InitDb")]
+    [Migration("20250916115900_InitDb")]
     partial class InitDb
     {
         /// <inheritdoc />

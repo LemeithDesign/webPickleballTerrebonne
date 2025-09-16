@@ -3,19 +3,12 @@ using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
 using web_PickleballTerrebonne.Data.Contexts;
 using web_PickleballTerrebonne.Data.Depot;
-using web_PickleballTerrebonne.Hubs;
 using web_PickleballTerrebonne.ObjetTransfertDonnee;
 
 var builder = WebApplication.CreateBuilder(args);
 var environment = builder.Environment;
 
 var services = builder.Services;
-
-//string? connString = builder.Configuration.GetConnectionString("DefaultConnection");
-//if(string.IsNullOrEmpty(connString))
-//{
-//    throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-//}
 
 if (environment.IsDevelopment())
 {
