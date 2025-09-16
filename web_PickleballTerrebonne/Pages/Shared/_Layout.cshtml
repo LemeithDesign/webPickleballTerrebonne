@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html lang="fr-ca">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <partial name="_BootstrapCssHeader.cshtml" />
+    <partial name="_SiteCssHeader.cshtml" />
+    @RenderSection("ScriptsEntete", required: false)
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <partial name="_MenuNavigation.cshtml" />
+    <div class="flex-grow-1">
+        @RenderBody()
+    </div>
+    <partial name="_PiedPage.cshtml" />
+    <partial name="_BootstrapJsFooter.cshtml" />
+    @RenderSection("ScriptsPied", required: false)
+</body>
+</html>

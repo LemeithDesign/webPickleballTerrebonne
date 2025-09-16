@@ -1,0 +1,40 @@
+﻿@page
+@model web_PickleballTerrebonne.Pages.InscriptionModel
+@{
+    ViewBag.Title = "Inscription";
+}
+<div class="container wp">
+    <h2 class="wp">Conditions pour devenir membre</h2>
+    <ol class="mt-5">
+        <li>Être résident(e) de Terrebonne.&nbsp; (preuve de résidence exigée)</li>
+        <li>Avoir 18 ans et plus.</li>
+        <li>Vous devez assister à une des <strong>rencontres/cours d’initiation obligatoire</strong>, et ce même si vous savez déjà joué. Les cours d’initiation (gratuits à l’inscription) vous enseignent les rudiments du sport de pickleball.</li>
+    </ol>
+    <div>N.B. Vous n’avez pas besoin de partenaires pour jouer car les groupes se forment selon l’ordre d’arrivée des joueurs à une plage horaire. Donc, vous pouvez être seul et pouvoir jouer.</div>
+    <div class="my-3 rouge">Nous acceptons uniquement les joueurs et joueuses résidant dans la ville de Terrebonne.</div>
+    <div class="mb-3">La carte de membre annuelle est de $25,00* par personne et est valable du 1er septembre au 31 août de l’année suivante, quelque soit la date à laquelle vous vous inscrivez. Donc, pour cette année,<strong> la carte de membre&nbsp; expirera le 31 août 2025</strong></div>
+    <div class="mb-3">Cette carte de membre vous permet de jouer tout l’été, aussi souvent que vous le voulez, à l’un des parcs où nous sommes présents. Il est possible de jouer 7 matins et 5 soirs (selon les parcs) et aucune réservation n’est nécessaire.</div>
+    <div class="mb-3">Si vous voulez jouer en automne/hiver, nous jouons les soirs et les fins de semaine dans des écoles, réparties dans toute la ville de Terrebonne.&nbsp; Les frais sont en surplus de votre carte de membre. Les plages horaires (d’une durée de 2h30 à 3h) seront valables d’octobre à mai, et le coût est de $65,00* par plage horaire, par personne. Vos places vous seront alors réservées.</div>
+    <div class="mb-3">* Les prix inclus la TPS et la TVQ et sont sujets à changement, sans préavis.</div>
+
+    <div id="cardNouvMem" class="d-flex justify-content-center my-5">
+        <div class="card text-center w-75 shadow">
+            <div class="card-header">Nouveaux membres</div>
+            <div class="card-body">
+                <h2 class="card-title wpTitre">Les inscriptions sont complètes pour la saison.</h2>
+                <div class="card-text">Les prochaines inscriptions auront lieu en automne 2025 , si des places se libèrent. Il n’y a pas de liste d’attente, veuillez donc consulter ce site au <span class="rouge">milieu de septembre</span> pour la date des inscriptions.</div>
+            </div>
+        </div>
+    </div>
+    @* <button id="myButton" class="d-none btn btn-primary">Je veux m'inscrire</button> *@
+    <div class="d-flex justify-content-center my-5">
+        <a asp-page="/inscriptions/Creer" class="btn btn-primary">Je veux m'inscrire</a>
+        @* <button id="btnJoindre" class="btn btn-primary">Je veux m'inscrire</button> *@
+    </div>
+</div>
+
+@section ScriptsPied {
+    @* <script src="~/lib/jquery/jquery.min.js"></script> *@
+    <script src="~/lib/jquery/jquery.slim.min.js"></script>
+    <script src="~/js/inscriptionbutton.js"></script>
+}

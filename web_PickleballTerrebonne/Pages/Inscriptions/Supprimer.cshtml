@@ -1,0 +1,22 @@
+﻿@page "{id:int}"
+@model web_PickleballTerrebonne.Pages.Inscriptions.SupprimerModel
+@{
+    ViewBag.Title = "Inscription - Supprimer";
+}
+<div class="card mt-3">
+    <div class="card-body">
+        <div class="card-title">
+            <h4>Supprimer @Model.InscriptionOtd.Prenom @Model.InscriptionOtd.Nom des inscriptions?</h4>
+        </div>
+        <form method="post">
+            <input asp-for="InscriptionOtd.Id" type="hidden" />
+            <div class="mb-4">
+                Êtes vous certain?
+            </div>
+            <div>
+                <input type="submit" value="Supprimer" class="btn btn-primary" />
+                <a asp-area="Admin" asp-page="/musiciens/index" class="btn btn-danger">Annuler</a>
+            </div>
+        </form>
+    </div>
+</div>

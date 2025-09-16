@@ -1,0 +1,24 @@
+﻿@page "{id:int}"
+@model web_PickleballTerrebonne.Pages.Inscriptions.DetailsModel
+@{
+    ViewBag.Title = "Inscription - Détails";
+}
+
+<div class="container">
+    <div class="card my-2">
+        <div class="card-body">
+            <div class="card-text"><span class="small">Id:</span> @Model.InscriptionOtd.Id</div>
+            <div class="card-text"><span class="small">Nom:</span> @Model.InscriptionOtd.Nom</div>
+            <div class="card-text"><span class="small">Prénom:</span> @Model.InscriptionOtd.Prenom</div>
+            <div class="card-text"><span class="small">Téléphone:</span> @Model.InscriptionOtd.Telephone</div>
+            <div class="card-text"><span class="small">Courriel:</span> @Model.InscriptionOtd.Courriel</div>
+            <div class="card-text"><span class="small">Date de naissance:</span> @Model.InscriptionOtd.DateNaissance</div>
+            <div class="card-text"><span class="small">Adresse:</span> @Model.InscriptionOtd.Adresse</div>
+            <div class="card-text"><span class="small">Ville:</span> @Model.InscriptionOtd.Ville</div>
+            <div class="card-text"><span class="small">Code postal:</span> @Model.InscriptionOtd.CodePostal</div>
+            <div class="card-text"><span class="small">Nom contact urgence:</span> @Model.InscriptionOtd.NomContactUrgence</div>
+            <div class="card-text"><span class="small">Prénom contact urgence:</span> @Model.InscriptionOtd.PrenomContactUrgence</div>
+            <div class="card-text"><span class="small">Téléphone contact urgence:</span> @Model.InscriptionOtd.TelephoneContactUrgence</div>
+        </div>
+    </div>
+</div>

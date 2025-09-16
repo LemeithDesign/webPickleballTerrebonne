@@ -1,0 +1,102 @@
+﻿@page "{id:int}"
+@model web_PickleballTerrebonne.Pages.Inscriptions.ModifierModel
+@{
+    ViewBag.Title = "Inscription - Modifier";
+}
+
+<form method="post">
+    <input asp-for="InscriptionOtd.Id" type="hidden" />
+    <div class="container">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title">Information du joueur</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6 mb-2">
+                        <label asp-for="InscriptionOtd.Nom" class="form-label"></label>
+                        <input asp-for="InscriptionOtd.Nom" class="form-control" />
+                        <span asp-validation-for="InscriptionOtd.Nom" class="text-danger"></span>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label asp-for="InscriptionOtd.Prenom" class="form-label"></label>
+                        <input asp-for="InscriptionOtd.Prenom" class="form-control" />
+                        <span asp-validation-for="InscriptionOtd.Prenom" class="text-danger"></span>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label asp-for="InscriptionOtd.Telephone" class="form-label"></label>
+                        <input asp-for="InscriptionOtd.Telephone" class="form-control phone" />
+                        <span asp-validation-for="InscriptionOtd.Telephone" class="text-danger"></span>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label asp-for="InscriptionOtd.Courriel" class="form-label"></label>
+                        <input asp-for="InscriptionOtd.Courriel" class="form-control" />
+                        <span asp-validation-for="InscriptionOtd.Courriel" class="text-danger"></span>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label asp-for="InscriptionOtd.DateNaissance" class="form-label"></label>
+                        <input asp-for="InscriptionOtd.DateNaissance" class="form-control" type="Date" />
+                        <span asp-validation-for="InscriptionOtd.DateNaissance" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title">Adresse</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6 mb-2">
+                        <label asp-for="InscriptionOtd.Adresse" class="form-label"></label>
+                        <input asp-for="InscriptionOtd.Adresse" class="form-control" />
+                        <span asp-validation-for="InscriptionOtd.Adresse" class="text-danger"></span>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label asp-for="InscriptionOtd.Ville" class="form-label"></label>
+                        <input asp-for="InscriptionOtd.Ville" class="form-control" />
+                        <span asp-validation-for="InscriptionOtd.Ville" class="text-danger"></span>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label asp-for="InscriptionOtd.CodePostal" class="form-label"></label>
+                        <input asp-for="InscriptionOtd.CodePostal" class="form-control postal" />
+                        <span asp-validation-for="InscriptionOtd.CodePostal" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title">Contact d'urgence</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6 mb-2">
+                        <label asp-for="InscriptionOtd.NomContactUrgence" class="form-label"></label>
+                        <input asp-for="InscriptionOtd.NomContactUrgence" class="form-control" />
+                        <span asp-validation-for="InscriptionOtd.NomContactUrgence" class="text-danger"></span>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label asp-for="InscriptionOtd.PrenomContactUrgence" class="form-label"></label>
+                        <input asp-for="InscriptionOtd.PrenomContactUrgence" class="form-control" />
+                        <span asp-validation-for="InscriptionOtd.PrenomContactUrgence" class="text-danger"></span>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label asp-for="InscriptionOtd.TelephoneContactUrgence" class="form-label"></label>
+                        <input asp-for="InscriptionOtd.TelephoneContactUrgence" class="form-control phone" />
+                        <span asp-validation-for="InscriptionOtd.TelephoneContactUrgence" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Modifier" class="btn btn-primary" />
+            <a asp-page="/Inscriptions" class="btn btn-danger">Annuler</a>
+        </div>
+    </div>
+</form>
+
+@section ScriptsPied {
+    <script src="~/lib/jquery/jquery.slim.min.js"></script>
+    <script src="~/js/formulaireinscription.js"></script>
+}

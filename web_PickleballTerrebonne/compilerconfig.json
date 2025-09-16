@@ -1,0 +1,20 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/Site.min.css",
+    "inputFile": "Sass/Site.scss",
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "includeInProject": true,
+    "sourceMap": true
+  },
+  {
+    "outputFile": "Sass/Site.css",
+    "inputFile": "Sass/Site.scss",
+    "minify": {
+      "enabled": false
+    },
+    "includeInProject": false
+  }
+]

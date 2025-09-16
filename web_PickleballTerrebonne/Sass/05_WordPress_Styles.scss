@@ -1,0 +1,23 @@
+﻿@import "02_Variables";
+
+h2.wp {
+    font-family: $wpFontTitres;
+    color: #0F0F0F;
+    text-transform: uppercase;
+    font-size: 2.25rem;
+    letter-spacing: -0.5px;
+}
+
+div.wp {
+    font-family: $wpFontText;
+}
+
+.rouge {
+    color: #ff0000;
+}
+
+.wpTitre {
+    font-family: $wpFontTitres;
+    color: #0F0F0F;
+    text-transform: uppercase;
+}

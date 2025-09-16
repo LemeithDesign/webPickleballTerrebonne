@@ -1,0 +1,33 @@
+﻿@page
+@model web_PickleballTerrebonne.Pages.Inscriptions.IndexModel
+@{
+    ViewBag.Title = "Inscription - Index";
+}
+
+<div class="container">
+    <table class="table align-middle">
+        <thead>
+            <tr>
+                <th scope="col" class="col-2">Nom</th>
+                <th scope="col" class="col-2">Prénom</th>
+                <td scope="col" class="col-3 text-end"><a class="btn btn-primary btn-sm" role="button" asp-page="/inscriptions/creer">Ajouter une inscription</a></td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Inscriptions is not null)
+            {
+                @foreach (var inscription in Model.Inscriptions)
+                {
+                    <tr>
+                        <td style="cursor:pointer" onclick="window.location.href='/inscriptions/details/@inscription.Id'">@inscription.Nom</td>
+                        <td style="cursor:pointer" onclick="window.location.href='/inscriptions/details/@inscription.Id'">@inscription.Prenom</td>
+                        <td class="text-end">
+                            <a class="btn btn-secondary btn-sm" role="button" asp-page="/inscriptions/modifier" asp-route-id="@inscription.Id">Modifier</a>
+                            <a class="btn btn-danger btn-sm" role="button" asp-page="/inscriptions/supprimer" asp-route-id="@inscription.Id">Supprimer</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
