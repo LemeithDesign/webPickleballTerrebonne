@@ -7,7 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Databases\" />
+    <None Remove="Databases\DataDb.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Databases\DataDb.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Enum\" />
   </ItemGroup>
 

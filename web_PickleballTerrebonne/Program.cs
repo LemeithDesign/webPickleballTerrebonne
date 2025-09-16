@@ -34,23 +34,22 @@ services.AddSingleton(mapsterConfig);
 services.AddScoped<ServiceMapper>();
 services.AddScoped<IMapper>(sp => sp.GetRequiredService<ServiceMapper>());
 
-builder.Services.AddRazorPages(opt =>
-    opt.Conventions.AddPageRoute("/Inscription", "")
-    );
+//builder.Services.AddRazorPages(opt => opt.Conventions.AddPageRoute("/Inscription", ""));
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
-//if (app.Environment.IsDevelopment())
-//{
+    app.UseDeveloperExceptionPage();
+if (app.Environment.IsDevelopment())
+{
 
-//}
-//else
-//{
-//    //app.UseExceptionHandler("/Error");
-//    app.UseHsts();
-//}
+}
+else
+{
+    //app.UseExceptionHandler("/Error");
+    app.UseHsts();
+}
 
-app.UseDeveloperExceptionPage();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
