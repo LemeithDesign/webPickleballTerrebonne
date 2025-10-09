@@ -1,59 +1,66 @@
 ﻿@font-face {
-  font-family: 'Roboto-Regular';
+  font-family: "Roboto-Regular";
   src: url("../../fonts/Roboto-Regular.ttf") format("truetype");
   font-weight: normal;
-  font-style: normal; }
-
+  font-style: normal;
+}
 @font-face {
-  font-family: 'BarlowCondensed-Bold';
+  font-family: "BarlowCondensed-Bold";
   src: url("../../fonts/BarlowCondensed-Bold.ttf") format("truetype");
   font-weight: normal;
-  font-style: normal; }
-
+  font-style: normal;
+}
 @font-face {
-  font-family: 'BarlowCondensed';
+  font-family: "BarlowCondensed";
   src: url("../../fonts/BarlowCondensed-Regular.ttf") format("truetype");
   font-weight: normal;
-  font-style: normal; }
-
+  font-style: normal;
+}
 @font-face {
-  font-family: 'DMSans-Bold';
+  font-family: "DMSans-Bold";
   src: url("../../fonts/DMSans-Bold.ttf") format("truetype");
   font-weight: normal;
-  font-style: normal; }
-
+  font-style: normal;
+}
 @font-face {
-  font-family: 'DMSans';
+  font-family: "DMSans";
   src: url("../../fonts/DMSans-Regular.ttf") format("truetype");
   font-weight: normal;
-  font-style: normal; }
-
+  font-style: normal;
+}
 body {
-  background-color: #F6F5F9; }
+  background-color: #F6F5F9;
+}
 
 .navbar {
-  background-color: white; }
+  background-color: white;
+}
 
 .piedPage {
   /*margin: 1rem,0,1.5rem,0;*/
   /*margin: 10;*/
   /*padding: 10;*/
-  background-color: #fff; }
+  background-color: #fff;
+}
 
 h2.wp {
   font-family: "BarlowCondensed-bold", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   color: #0F0F0F;
   text-transform: uppercase;
   font-size: 2.25rem;
-  letter-spacing: -0.5px; }
+  letter-spacing: -0.5px;
+}
 
 div.wp {
-  font-family: "DMSans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+  font-family: "DMSans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
 
 .rouge {
-  color: #ff0000; }
+  color: #ff0000;
+}
 
 .wpTitre {
   font-family: "BarlowCondensed-bold", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   color: #0F0F0F;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}

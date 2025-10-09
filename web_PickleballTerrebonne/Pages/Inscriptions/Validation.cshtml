@@ -1,0 +1,14 @@
+﻿@* @page "{id:int}"
+@model web_PickleballTerrebonne.Pages.Inscriptions.ValidationModel
+@{
+    ViewBag.Title = "Formulaire envoyé";
+}
+
+<div class="container">
+    <h3>Votre formulaire a bien été envoyé.</h3>
+    <div>Vous recevrez une confirmation par courriel dans les prochaines minutes. Pensez à vérifier votre dossier de courriels indésirables.</div>
+    <div>Adresse utilisée : @Model.InscriptionOtd.Courriel</div>
+    <div>Si cette adresse est incorrecte, <a asp-page="/inscriptions/modifier" asp-route-id="@Model.InscriptionOtd.Id">[cliquez ici pour la corriger]</a></div>
+    <div>Merci pour votre intérêt envers le Club de Pickleball de Terrebonne !</div>
+</div>
+ *@

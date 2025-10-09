@@ -1,9 +1,13 @@
 using Mapster;
 using MapsterMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using web_PickleballTerrebonne.Claims;
 using web_PickleballTerrebonne.Data.Contexts;
 using web_PickleballTerrebonne.Data.Depot;
+using web_PickleballTerrebonne.Data.Entites;
 using web_PickleballTerrebonne.ObjetTransfertDonnee;
+using web_PickleballTerrebonne.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var environment = builder.Environment;
@@ -22,17 +26,26 @@ else
 }
 
 #region Injections
-services.AddScoped<IInscriptionData, InscriptionData>();
+//services.AddScoped<IInscriptionData, InscriptionData>();
+services.AddScoped<IMembreData, MembreData>();
+services.AddScoped<IMembreService, MembreService>();
+services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, CustomClaimsPrincipalFactory>();
 #endregion Injections
 
 
-// Mapping
+#region mapping
 var mapsterConfig = TypeAdapterConfig.GlobalSettings;
 mapsterConfig.Scan(typeof(MapsterConfig).Assembly);
 
 services.AddSingleton(mapsterConfig);
 services.AddScoped<ServiceMapper>();
 services.AddScoped<IMapper>(sp => sp.GetRequiredService<ServiceMapper>());
+#endregion mapping
+
+#region Identity
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<DataContext>();
+#endregion Identity
 
 //builder.Services.AddRazorPages(opt => opt.Conventions.AddPageRoute("/Inscription", ""));
 builder.Services.AddRazorPages();
@@ -55,6 +68,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthorization();
 
 app.MapRazorPages();
 

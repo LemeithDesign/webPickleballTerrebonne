@@ -1,0 +1,25 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using web_PickleballTerrebonne.Data.Entites;
+
+namespace web_PickleballTerrebonne.Areas.Identity.Pages.Account
+{
+    public class LogoutModel(SignInManager<ApplicationUser> signInManager) : PageModel
+    {
+        private readonly SignInManager<ApplicationUser> _signInManager = signInManager;
+
+        public async Task<IActionResult> OnPost(string? returnUrl = null)
+        {
+            await _signInManager.SignOutAsync();
+            if (returnUrl != null)
+            {
+                return LocalRedirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToPage();
+            }
+        }
+    }
+}
