@@ -4,8 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>web_PickleballTerrebonne</AssemblyName>
-    <RootNamespace>web_PickleballTerrebonne</RootNamespace>
+    <AssemblyName>webPickleballTerrebonne</AssemblyName>
+    <RootNamespace>webPickleballTerrebonne</RootNamespace>
     <Platforms>AnyCPU</Platforms>
     <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
   </PropertyGroup>
@@ -25,7 +25,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\web_PickleballTerrebonne.Data\webPickleballTerrebonne.Data.csproj" />
+    <ProjectReference Include="..\webPickleballTerrebonne.Data\webPickleballTerrebonne.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
