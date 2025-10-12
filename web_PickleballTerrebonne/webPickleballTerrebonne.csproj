@@ -25,7 +25,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\web_PickleballTerrebonne.Data\web_PickleballTerrebonne.Data.csproj" />
+    <ProjectReference Include="..\web_PickleballTerrebonne.Data\webPickleballTerrebonne.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +33,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\fonts\Roboto-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\images\Logo.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\images\logo-club-pickleball-Terrebonne_rgb.svg">

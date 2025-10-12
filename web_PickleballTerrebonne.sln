@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web_PickleballTerrebonne", "web_PickleballTerrebonne\web_PickleballTerrebonne.csproj", "{9B07F7A6-43ED-4217-8A4A-DCEA7C274622}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webPickleballTerrebonne", "web_PickleballTerrebonne\webPickleballTerrebonne.csproj", "{9B07F7A6-43ED-4217-8A4A-DCEA7C274622}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web_PickleballTerrebonne.Data", "web_PickleballTerrebonne.Data\web_PickleballTerrebonne.Data.csproj", "{18BB14BD-8BB9-49A3-9D6B-07950C5EA42A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webPickleballTerrebonne.Data", "web_PickleballTerrebonne.Data\webPickleballTerrebonne.Data.csproj", "{18BB14BD-8BB9-49A3-9D6B-07950C5EA42A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

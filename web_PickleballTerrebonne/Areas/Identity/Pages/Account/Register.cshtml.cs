@@ -53,7 +53,7 @@ namespace web_PickleballTerrebonne.Areas.Identity.Pages.Account
             public string Email { get; set; } = string.Empty;
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "Le {0} doit avoir au moins {2} et au maximum {1} caractères.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Mot de passe")]
             public string Password { get; set; } = string.Empty;
