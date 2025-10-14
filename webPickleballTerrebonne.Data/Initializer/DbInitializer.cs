@@ -1,12 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using webPickleballTerrebonne.Data.Contexts;
 using webPickleballTerrebonne.Data.Depot;
-using webPickleballTerrebonne.Data.Entites;
 using webPickleballTerrebonne.Data.Entites;
 
 namespace webPickleballTerrebonne.Data.Initializer
