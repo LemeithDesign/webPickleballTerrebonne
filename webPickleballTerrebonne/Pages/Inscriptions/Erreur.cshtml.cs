@@ -1,7 +1,7 @@
 //using Microsoft.AspNetCore.Mvc;
 //using Microsoft.AspNetCore.Mvc.RazorPages;
 
-//namespace web_PickleballTerrebonne.Pages.Inscriptions
+//namespace webPickleballTerrebonne.Pages.Inscriptions
 //{
 //    public class ErreurModel : PageModel
 //    {

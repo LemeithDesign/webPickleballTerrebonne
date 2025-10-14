@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace web_PickleballTerrebonne.Data.Entites
+namespace webPickleballTerrebonne.Data.Entites
 {
     public class Inscription
     {

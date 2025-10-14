@@ -1,28 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using web_PickleballTerrebonne.Data.Entites;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace webPickleballTerrebonne.Data.Entites
 {
     public class Seance
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdSeance { get; set; }
-        DayOfWeek Jour { get; set; }
-        TimeOnly HeureDebut { get; set; }
-        TimeOnly heureFin { get; set; }
+        public DayOfWeek Jour { get; set; }
+        public TimeOnly HeureDebut { get; set; }
+        public TimeOnly HeureFin { get; set; }
 
         public int QtePlaceMaximale { get; set; }
-        public int QtePlaceChoisi { get; set; }
+        public int QtePlaceOptimale { get; set; }
 
         public int TerrainId { get; set; }
-        public Terrain Terrain { get; set; } = default!;
+        public virtual Terrain Terrain { get; set; } = default!;
 
         public int ResponsableId { get; set; }
-        public Membre Responsable { get; set; } = default!;
+        public virtual Membre Responsable { get; set; } = default!;
 
-        //public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
+        public List<Membre> MembresReguliers { get; set; } = [];
+
+        public List<Participation> Participations { get; set; } = [];
     }
 }

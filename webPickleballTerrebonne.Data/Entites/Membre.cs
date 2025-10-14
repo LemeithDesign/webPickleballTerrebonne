@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace web_PickleballTerrebonne.Data.Entites
+namespace webPickleballTerrebonne.Data.Entites
 {
     public class Membre
     {
@@ -45,5 +45,7 @@ namespace web_PickleballTerrebonne.Data.Entites
         public string ContactUrgenceTelephone { get; set; } = string.Empty;
         [Required, StringLength(100)]
         public string ContactUrgenceRelation { get; set; } = string.Empty;
+
+        public List<Participation> Participations { get; set; } = [];
     }
 }

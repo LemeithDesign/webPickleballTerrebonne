@@ -2,12 +2,13 @@ using Mapster;
 using MapsterMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using web_PickleballTerrebonne.Claims;
-using web_PickleballTerrebonne.Data.Contexts;
-using web_PickleballTerrebonne.Data.Depot;
-using web_PickleballTerrebonne.Data.Entites;
-using web_PickleballTerrebonne.ObjetTransfertDonnee;
-using web_PickleballTerrebonne.Services;
+using webPickleballTerrebonne.Claims;
+using webPickleballTerrebonne.Data.Contexts;
+using webPickleballTerrebonne.Data.Depot;
+using webPickleballTerrebonne.Data.Entites;
+using webPickleballTerrebonne.ObjetTransfertDonnee;
+using webPickleballTerrebonne.Services;
+using webPickleballTerrebonne.Data.Initializer;
 
 var builder = WebApplication.CreateBuilder(args);
 var environment = builder.Environment;
@@ -17,12 +18,12 @@ var services = builder.Services;
 if (environment.IsDevelopment())
 {
     // Développement
-    services.AddDbContext<DataContext>(options => options.UseSqlite("Data Source=../web_PickleballTerrebonne.Data/Databases/DataDb.db", b => b.MigrationsAssembly("web_PickleballTerrebonne.Data")));
+    services.AddDbContext<DataContext>(options => options.UseSqlite("Data Source=../webPickleballTerrebonne.Data/Databases/DataDb.db", b => b.MigrationsAssembly("webPickleballTerrebonne.Data")));
 }
 else
 {
     // Production
-    services.AddDbContext<DataContext>(options => options.UseSqlite("Data Source=./Databases/DataDb.db", b => b.MigrationsAssembly("web_PickleballTerrebonne.Data")));
+    services.AddDbContext<DataContext>(options => options.UseSqlite("Data Source=./Databases/DataDb.db", b => b.MigrationsAssembly("webPickleballTerrebonne.Data")));
 }
 
 #region Injections
@@ -31,7 +32,6 @@ services.AddScoped<IMembreData, MembreData>();
 services.AddScoped<IMembreService, MembreService>();
 services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, CustomClaimsPrincipalFactory>();
 #endregion Injections
-
 
 #region mapping
 var mapsterConfig = TypeAdapterConfig.GlobalSettings;
@@ -51,6 +51,22 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
+
+// Seeder la base de données:
+using var scope = app.Services.CreateScope();
+
+var scopeServices = scope.ServiceProvider;
+var dbContext = scopeServices.GetRequiredService<DataContext>();
+var gestMembres = scopeServices.GetRequiredService<IMembreData>();
+var userStore = scopeServices.GetRequiredService<IUserStore<ApplicationUser>>();
+var userManager = scopeServices.GetRequiredService<UserManager<ApplicationUser>>();
+
+dbContext.Database.EnsureDeleted();
+dbContext.Database.Migrate();
+dbContext.Database.EnsureCreated();
+
+DbInitializer dbInitializer = new DbInitializer(gestMembres, userStore, userManager);
+dbInitializer.Seed(dbContext).Wait();
 
     app.UseDeveloperExceptionPage();
 if (app.Environment.IsDevelopment())

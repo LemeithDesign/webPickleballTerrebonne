@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
-using web_PickleballTerrebonne.Data.Depot;
-using web_PickleballTerrebonne.Data.Entites;
+using webPickleballTerrebonne.Data.Depot;
+using webPickleballTerrebonne.Data.Entites;
 
-namespace web_PickleballTerrebonne.Services
+namespace webPickleballTerrebonne.Services
 {
     public interface IMembreService
     {

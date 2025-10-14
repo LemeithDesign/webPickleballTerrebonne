@@ -1,14 +1,17 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using web_PickleballTerrebonne.Data.Entites;
+using webPickleballTerrebonne.Data.Entites;
 
-namespace web_PickleballTerrebonne.Data.Contexts
+namespace webPickleballTerrebonne.Data.Contexts
 {
     public class DataContext(DbContextOptions<DataContext> options) : IdentityDbContext<ApplicationUser>(options)
     {
         public DbSet<Membre> Membres { get; set; }
         //public DbSet<Inscription> Inscriptions { get; set; }
+        public DbSet<Terrain> Terrains { get; set; }
+        public DbSet<Seance> Seances { get; set; }
+        public DbSet<Participation> Participations { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

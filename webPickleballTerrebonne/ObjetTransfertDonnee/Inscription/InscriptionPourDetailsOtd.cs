@@ -1,4 +1,4 @@
-﻿namespace web_PickleballTerrebonne.ObjetTransfertDonnee.Inscription
+﻿namespace webPickleballTerrebonne.ObjetTransfertDonnee.Inscription
 {
     public class InscriptionPourDetailsOtd
     {

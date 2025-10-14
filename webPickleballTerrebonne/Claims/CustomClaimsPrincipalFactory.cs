@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
-using web_PickleballTerrebonne.Data.Depot;
-using web_PickleballTerrebonne.Data.Entites;
+using webPickleballTerrebonne.Data.Depot;
+using webPickleballTerrebonne.Data.Entites;
 
-namespace web_PickleballTerrebonne.Claims
+namespace webPickleballTerrebonne.Claims
 {
     public class CustomClaimsPrincipalFactory(UserManager<ApplicationUser> userManager, IOptions<IdentityOptions> optionsAccessor, IMembreData gestMembres) : UserClaimsPrincipalFactory<ApplicationUser>(userManager, optionsAccessor)
     {

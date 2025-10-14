@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace web_PickleballTerrebonne.Data.Entites
+namespace webPickleballTerrebonne.Data.Entites
 {
     public class ApplicationUser : IdentityUser
     {

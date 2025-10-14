@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
-using web_PickleballTerrebonne.Data.Entites;
+using webPickleballTerrebonne.Data.Entites;
 
-namespace web_PickleballTerrebonne.Areas.Identity.Pages.Account
+namespace webPickleballTerrebonne.Areas.Identity.Pages.Account
 {
     public class LoginModel(SignInManager<ApplicationUser> signInManager) : PageModel
     {

@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text;
-using web_PickleballTerrebonne.Data.Entites;
+using webPickleballTerrebonne.Data.Entites;
 
-namespace web_PickleballTerrebonne.Areas.Identity.Pages.Account
+namespace webPickleballTerrebonne.Areas.Identity.Pages.Account
 {
     public class IndexModel(UserManager<ApplicationUser> userManager) : PageModel
     {

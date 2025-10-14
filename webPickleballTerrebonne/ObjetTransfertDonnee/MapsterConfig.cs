@@ -1,7 +1,7 @@
 ﻿using Mapster;
-using web_PickleballTerrebonne.ObjetTransfertDonnee.Inscription;
+using webPickleballTerrebonne.ObjetTransfertDonnee.Inscription;
 
-namespace web_PickleballTerrebonne.ObjetTransfertDonnee
+namespace webPickleballTerrebonne.ObjetTransfertDonnee
 {
     public class MapsterConfig : IRegister
     {

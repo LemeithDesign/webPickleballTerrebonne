@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.WebUtilities;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Encodings.Web;
-using web_PickleballTerrebonne.Data.Depot;
-using web_PickleballTerrebonne.Data.Entites;
+using webPickleballTerrebonne.Data.Depot;
+using webPickleballTerrebonne.Data.Entites;
 
-namespace web_PickleballTerrebonne.Areas.Identity.Pages.Account
+namespace webPickleballTerrebonne.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {

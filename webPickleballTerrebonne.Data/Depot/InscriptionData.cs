@@ -1,8 +1,8 @@
 ﻿//using Microsoft.EntityFrameworkCore;
-//using web_PickleballTerrebonne.Data.Contexts;
-//using web_PickleballTerrebonne.Data.Entites;
+//using webPickleballTerrebonne.Data.Contexts;
+//using webPickleballTerrebonne.Data.Entites;
 
-//namespace web_PickleballTerrebonne.Data.Depot
+//namespace webPickleballTerrebonne.Data.Depot
 //{
 //    public interface IInscriptionData
 //    {

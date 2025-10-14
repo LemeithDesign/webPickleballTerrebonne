@@ -1,11 +1,11 @@
 //using MapsterMapper;
 //using Microsoft.AspNetCore.Mvc;
 //using Microsoft.AspNetCore.Mvc.RazorPages;
-//using web_PickleballTerrebonne.Data.Depot;
-//using web_PickleballTerrebonne.Data.Entites;
-//using web_PickleballTerrebonne.ObjetTransfertDonnee.Inscription;
+//using webPickleballTerrebonne.Data.Depot;
+//using webPickleballTerrebonne.Data.Entites;
+//using webPickleballTerrebonne.ObjetTransfertDonnee.Inscription;
 
-//namespace web_PickleballTerrebonne.Pages.Inscriptions
+//namespace webPickleballTerrebonne.Pages.Inscriptions
 //{
 //    public class IndexModel(IMapper mapper, IInscriptionData inscriptionData) : PageModel
 //    {
