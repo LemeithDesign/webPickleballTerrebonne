@@ -4,3 +4,10 @@
     /*padding: 10;*/
     background-color: #fff;
 }
+
+
+@media (min-width: 768px) {
+    .border-md-end {
+        border-right: 1px solid #ccc;
+    }
+}

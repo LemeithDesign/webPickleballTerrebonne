@@ -1,0 +1,42 @@
+﻿@page
+@using System.Globalization
+@using webPickleballTerrebonne.ObjetTransfertDonnee.Seances
+@model webPickleballTerrebonne.Pages.Seances.IndexModel
+@{
+    ViewBag.Title = "Index des séances";
+}
+
+<div class="container">
+    <h1>Séances</h1>
+
+    <div class="row">
+        @if (Model.Seances is null || Model.Seances.Count == 0)
+        {
+            <div>Aucune séances.</div>
+        }
+        else
+        {
+            @foreach (var jour in Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>())
+            {
+                var isLast = jour == DayOfWeek.Saturday;
+                var seances = Model.Seances.ContainsKey(jour) ? Model.Seances[jour] : new List<SeancePourIndexOtd>();
+                <div class="col-md @(isLast ? "" : "border-md-end")">
+                    <div class="text-center mb-3">
+                        @CultureInfo.CurrentCulture.TextInfo.ToTitleCase(CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(jour))
+                    </div>
+                    @foreach (var seance in seances)
+                    {
+                        <a asp-page="/Seances/Details" asp-route-IdSeance="@seance.IdSeance" class="text-decoration-none">
+                            <div class="card p-3">
+                                <strong>@seance.HeureDebut</strong>
+                                <div>
+                                    @seance.NomTerrain
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+            }
+        }
+    </div>
+</div>

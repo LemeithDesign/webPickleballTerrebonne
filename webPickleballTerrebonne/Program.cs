@@ -30,6 +30,7 @@ else
 //services.AddScoped<IInscriptionData, InscriptionData>();
 services.AddScoped<IMembreData, MembreData>();
 services.AddScoped<IMembreService, MembreService>();
+services.AddScoped<ISeanceData, SeanceData>();
 services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, CustomClaimsPrincipalFactory>();
 #endregion Injections
 
