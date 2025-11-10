@@ -9,7 +9,7 @@ namespace webPickleballTerrebonne.Data.Contexts
         public DbSet<Membre> Membres { get; set; }
         //public DbSet<Inscription> Inscriptions { get; set; }
         public DbSet<Terrain> Terrains { get; set; }
-        public DbSet<Seance> Seances { get; set; }
+        public DbSet<PlageHoraire> PlagesHoraires { get; set; }
         public DbSet<Participation> Participations { get; set; }
 
 

@@ -9,7 +9,7 @@ namespace webPickleballTerrebonne.Data.Entites
         public int IdParticipation { get; set; }
 
         public int IdSeance { get; set; }
-        public virtual Seance Seance { get; set; } = default!;
+        public virtual PlageHoraire PlageHoraire { get; set; } = default!;
 
         public int IdMembre { get; set; }
         public virtual Membre Membre { get; set; } = default!;

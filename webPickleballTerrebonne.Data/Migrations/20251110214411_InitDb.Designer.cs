@@ -11,8 +11,8 @@ using webPickleballTerrebonne.Data.Contexts;
 namespace webPickleballTerrebonne.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20251013135557_InidDb")]
-    partial class InidDb
+    [Migration("20251110214411_InitDb")]
+    partial class InitDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -269,13 +269,13 @@ namespace webPickleballTerrebonne.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("PlageHoraireIdPlageHoraire")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Prenom")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
-
-                    b.Property<int?>("SeanceIdSeance")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("TelephoneMobile")
                         .HasMaxLength(12)
@@ -288,7 +288,7 @@ namespace webPickleballTerrebonne.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SeanceIdSeance");
+                    b.HasIndex("PlageHoraireIdPlageHoraire");
 
                     b.ToTable("Membres");
                 });
@@ -311,21 +311,21 @@ namespace webPickleballTerrebonne.Data.Migrations
                     b.Property<int>("MembreId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("SeanceIdSeance")
+                    b.Property<int>("PlageHoraireIdPlageHoraire")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("IdParticipation");
 
                     b.HasIndex("MembreId");
 
-                    b.HasIndex("SeanceIdSeance");
+                    b.HasIndex("PlageHoraireIdPlageHoraire");
 
                     b.ToTable("Participations");
                 });
 
-            modelBuilder.Entity("webPickleballTerrebonne.Data.Entites.Seance", b =>
+            modelBuilder.Entity("webPickleballTerrebonne.Data.Entites.PlageHoraire", b =>
                 {
-                    b.Property<int>("IdSeance")
+                    b.Property<int>("IdPlageHoraire")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -350,13 +350,13 @@ namespace webPickleballTerrebonne.Data.Migrations
                     b.Property<int>("TerrainId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("IdSeance");
+                    b.HasKey("IdPlageHoraire");
 
                     b.HasIndex("ResponsableId");
 
                     b.HasIndex("TerrainId");
 
-                    b.ToTable("Seances");
+                    b.ToTable("PlagesHoraires");
                 });
 
             modelBuilder.Entity("webPickleballTerrebonne.Data.Entites.Terrain", b =>
@@ -458,9 +458,9 @@ namespace webPickleballTerrebonne.Data.Migrations
 
             modelBuilder.Entity("webPickleballTerrebonne.Data.Entites.Membre", b =>
                 {
-                    b.HasOne("webPickleballTerrebonne.Data.Entites.Seance", null)
+                    b.HasOne("webPickleballTerrebonne.Data.Entites.PlageHoraire", null)
                         .WithMany("MembresReguliers")
-                        .HasForeignKey("SeanceIdSeance");
+                        .HasForeignKey("PlageHoraireIdPlageHoraire");
                 });
 
             modelBuilder.Entity("webPickleballTerrebonne.Data.Entites.Participation", b =>
@@ -471,18 +471,18 @@ namespace webPickleballTerrebonne.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("webPickleballTerrebonne.Data.Entites.Seance", "Seance")
+                    b.HasOne("webPickleballTerrebonne.Data.Entites.PlageHoraire", "PlageHoraire")
                         .WithMany("Participations")
-                        .HasForeignKey("SeanceIdSeance")
+                        .HasForeignKey("PlageHoraireIdPlageHoraire")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Membre");
 
-                    b.Navigation("Seance");
+                    b.Navigation("PlageHoraire");
                 });
 
-            modelBuilder.Entity("webPickleballTerrebonne.Data.Entites.Seance", b =>
+            modelBuilder.Entity("webPickleballTerrebonne.Data.Entites.PlageHoraire", b =>
                 {
                     b.HasOne("webPickleballTerrebonne.Data.Entites.Membre", "Responsable")
                         .WithMany()
@@ -509,7 +509,7 @@ namespace webPickleballTerrebonne.Data.Migrations
                     b.Navigation("Participations");
                 });
 
-            modelBuilder.Entity("webPickleballTerrebonne.Data.Entites.Seance", b =>
+            modelBuilder.Entity("webPickleballTerrebonne.Data.Entites.PlageHoraire", b =>
                 {
                     b.Navigation("MembresReguliers");
 

@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace webPickleballTerrebonne.Data.Entites
 {
-    public class Seance
+    public class PlageHoraire
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int IdSeance { get; set; }
+        public int IdPlageHoraire { get; set; }
         public DayOfWeek Jour { get; set; }
         public TimeOnly HeureDebut { get; set; }
         public TimeOnly HeureFin { get; set; }

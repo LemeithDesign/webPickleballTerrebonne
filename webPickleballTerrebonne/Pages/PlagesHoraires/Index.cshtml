@@ -1,36 +1,36 @@
 ﻿@page
 @using System.Globalization
-@using webPickleballTerrebonne.ObjetTransfertDonnee.Seances
-@model webPickleballTerrebonne.Pages.Seances.IndexModel
+@using webPickleballTerrebonne.ObjetTransfertDonnee.PlagesHoraires
+@model webPickleballTerrebonne.Pages.PlagesHoraires.IndexModel
 @{
-    ViewBag.Title = "Index des séances";
+    ViewBag.Title = "Index des plages horaires";
 }
 
 <div class="container">
-    <h1>Séances</h1>
+    <h1>Plages Horaires</h1>
 
     <div class="row">
-        @if (Model.Seances is null || Model.Seances.Count == 0)
+        @if (Model.PlagesHorairesOtd is null || Model.PlagesHorairesOtd.Count == 0)
         {
-            <div>Aucune séances.</div>
+            <div>Aucune plages horaires.</div>
         }
         else
         {
             @foreach (var jour in Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>())
             {
                 var isLast = jour == DayOfWeek.Saturday;
-                var seances = Model.Seances.ContainsKey(jour) ? Model.Seances[jour] : new List<SeancePourIndexOtd>();
+                var plagesHoraires = Model.PlagesHorairesOtd.ContainsKey(jour) ? Model.PlagesHorairesOtd[jour] : new List<PlageHorairePourIndexOtd>();
                 <div class="col-md @(isLast ? "" : "border-md-end")">
                     <div class="text-center mb-3">
                         @CultureInfo.CurrentCulture.TextInfo.ToTitleCase(CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(jour))
                     </div>
-                    @foreach (var seance in seances)
+                    @foreach (var plageHoraire in plagesHoraires)
                     {
-                        <a asp-page="/Seances/Details" asp-route-IdSeance="@seance.IdSeance" class="text-decoration-none">
+                        <a asp-page="/PlagesHoraires/Details" asp-route-IdPlageHoraire="@plageHoraire.IdPlageHoraire" class="text-decoration-none">
                             <div class="card p-3">
-                                <strong>@seance.HeureDebut</strong>
+                                <strong>@plageHoraire.HeureDebut</strong>
                                 <div>
-                                    @seance.NomTerrain
+                                    @plageHoraire.NomTerrain
                                 </div>
                             </div>
                         </a>

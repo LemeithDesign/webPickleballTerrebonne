@@ -158,7 +158,7 @@ namespace webPickleballTerrebonne.Data.Initializer
             }
 
 
-            if(!context.Seances.Any())
+            if(!context.PlagesHoraires.Any())
             {
                 // Mercredi
                 Terrain terrain8 = context.Terrains.FirstOrDefault(t => t.Nom.Contains("La Sablière"))!;
@@ -168,7 +168,7 @@ namespace webPickleballTerrebonne.Data.Initializer
 
                 List<Membre> membres = new() { felix, isabelle };
 
-				Seance seance = new()
+                PlageHoraire seance = new()
                 {
                     Jour = DayOfWeek.Wednesday,
                     HeureDebut = new TimeOnly(18, 30, 0), // 18h30
@@ -184,7 +184,7 @@ namespace webPickleballTerrebonne.Data.Initializer
 					TerrainId = terrain8.IdTerrain,
 				};
 
-                await context.Seances.AddAsync(seance);
+                await context.PlagesHoraires.AddAsync(seance);
                 await context.SaveChangesAsync();
 			}
 		}

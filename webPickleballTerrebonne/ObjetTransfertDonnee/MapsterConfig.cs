@@ -1,6 +1,6 @@
 ﻿using Mapster;
 using webPickleballTerrebonne.ObjetTransfertDonnee.Inscription;
-using webPickleballTerrebonne.ObjetTransfertDonnee.Seances;
+using webPickleballTerrebonne.ObjetTransfertDonnee.PlagesHoraires;
 
 namespace webPickleballTerrebonne.ObjetTransfertDonnee
 {
@@ -14,12 +14,12 @@ namespace webPickleballTerrebonne.ObjetTransfertDonnee
             config.NewConfig<Data.Entites.Inscription, InscriptionPourModifierOtd>();
             config.NewConfig<Data.Entites.Inscription, InscriptionPourDetailsOtd>();
 
-            config.NewConfig<Data.Entites.Seance, SeancePourIndexOtd>()
+            config.NewConfig<Data.Entites.PlageHoraire, PlageHorairePourIndexOtd>()
                 .Map(dest => dest.HeureDebut, src => src.HeureDebut.ToString("HH:mm"))
                 .Map(dest => dest.NomTerrain, src => src.Terrain.Nom);
 
 
-            config.NewConfig<Data.Entites.Seance, SeancePourDetailOtd>()
+            config.NewConfig<Data.Entites.PlageHoraire, PlageHorairePourDetailOtd>()
                 .Map(dest => dest.NomTerrain, src => src.Terrain.Nom)
                 .Map(dest => dest.Adresse, src => src.Terrain.Adresse)
                 .Map(dest => dest.Ville, src => src.Terrain.Ville)

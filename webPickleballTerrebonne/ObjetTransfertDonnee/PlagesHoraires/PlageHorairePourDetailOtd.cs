@@ -1,8 +1,8 @@
-﻿namespace webPickleballTerrebonne.ObjetTransfertDonnee.Seances
+﻿namespace webPickleballTerrebonne.ObjetTransfertDonnee.PlagesHoraires
 {
-    public class SeancePourDetailOtd
+    public class PlageHorairePourDetailOtd
     {
-        public int IdSeance { get; set; }
+        public int IdPlageHoraire { get; set; }
         public DayOfWeek Jour { get; set; }
         public string HeureDebut { get; set; } = string.Empty;
         public string HeureFin { get; set; } = string.Empty;
