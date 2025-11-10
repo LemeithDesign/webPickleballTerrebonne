@@ -21,7 +21,5 @@ namespace webPickleballTerrebonne.Data.Entites
 
         [Required, StringLength(7)]
         public string CodePostal { get; set; } = string.Empty;
-
-        //public ICollection<Seance> Seances { get; set; } = new List<Seance>();
     }
 }

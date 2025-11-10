@@ -14,9 +14,9 @@ namespace webPickleballTerrebonne.Pages.PlagesHoraires
 
         public async Task OnGetAsync()
         {
-            List<PlageHoraire> lsSeances = await _gestPlagesHoraires.ObtenirPlagesHoraires();
+            List<PlageHoraire> lsPlagesHoraires = await _gestPlagesHoraires.ObtenirPlagesHoraires();
 
-            List<PlageHorairePourIndexOtd> lsPlagesHorairesOtd = lsSeances.Adapt<List<PlageHorairePourIndexOtd>>();
+            List<PlageHorairePourIndexOtd> lsPlagesHorairesOtd = lsPlagesHoraires.Adapt<List<PlageHorairePourIndexOtd>>();
 
             PlagesHorairesOtd = lsPlagesHorairesOtd
                 .GroupBy(s => s.Jour)

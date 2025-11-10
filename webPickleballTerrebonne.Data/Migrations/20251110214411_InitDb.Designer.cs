@@ -305,7 +305,7 @@ namespace webPickleballTerrebonne.Data.Migrations
                     b.Property<int>("IdMembre")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("IdSeance")
+                    b.Property<int>("IdPlageHoraire")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("MembreId")

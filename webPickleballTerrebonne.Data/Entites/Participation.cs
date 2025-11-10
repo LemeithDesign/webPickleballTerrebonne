@@ -8,7 +8,7 @@ namespace webPickleballTerrebonne.Data.Entites
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdParticipation { get; set; }
 
-        public int IdSeance { get; set; }
+        public int IdPlageHoraire { get; set; }
         public virtual PlageHoraire PlageHoraire { get; set; } = default!;
 
         public int IdMembre { get; set; }

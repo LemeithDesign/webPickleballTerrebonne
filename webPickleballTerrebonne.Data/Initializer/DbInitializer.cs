@@ -168,7 +168,7 @@ namespace webPickleballTerrebonne.Data.Initializer
 
                 List<Membre> membres = new() { felix, isabelle };
 
-                PlageHoraire seance = new()
+                PlageHoraire plageHoraire = new()
                 {
                     Jour = DayOfWeek.Wednesday,
                     HeureDebut = new TimeOnly(18, 30, 0), // 18h30
@@ -184,7 +184,7 @@ namespace webPickleballTerrebonne.Data.Initializer
 					TerrainId = terrain8.IdTerrain,
 				};
 
-                await context.PlagesHoraires.AddAsync(seance);
+                await context.PlagesHoraires.AddAsync(plageHoraire);
                 await context.SaveChangesAsync();
 			}
 		}

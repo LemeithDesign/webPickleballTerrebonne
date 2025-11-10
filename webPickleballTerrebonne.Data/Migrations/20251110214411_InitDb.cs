@@ -218,7 +218,7 @@ namespace webPickleballTerrebonne.Data.Migrations
                 {
                     IdParticipation = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    IdSeance = table.Column<int>(type: "INTEGER", nullable: false),
+                    IdPlageHoraire = table.Column<int>(type: "INTEGER", nullable: false),
                     PlageHoraireIdPlageHoraire = table.Column<int>(type: "INTEGER", nullable: false),
                     IdMembre = table.Column<int>(type: "INTEGER", nullable: false),
                     MembreId = table.Column<int>(type: "INTEGER", nullable: false),
