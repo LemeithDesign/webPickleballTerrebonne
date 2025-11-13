@@ -1,0 +1,27 @@
+﻿@page
+@model webPickleballTerrebonne.Areas.Admin.Pages.Membres.IndexModel
+@{
+    ViewBag.Title = "Liste des membres";
+}
+<div class="container">
+    <h2>Liste des membres</h2>
+     <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <td><a class="btn btn-secondary" asp-area="admin" asp-page="/membres/creer">Ajouter un membre</a></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var membre in Model.MembresOtd)
+            {
+                <tr>
+                    <td>@membre.Nom</td>
+                    <td>@membre.Prenom</td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table> 
+</div>

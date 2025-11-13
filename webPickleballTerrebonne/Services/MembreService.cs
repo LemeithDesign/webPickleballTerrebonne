@@ -21,7 +21,7 @@ namespace webPickleballTerrebonne.Services
 
             if (user?.Membre == null)
             {
-                Membre? m = await _gestMembres.ObtenirMembreParId(user.MembreId);
+                Membre? m = await _gestMembres.ObtenirMembreParIdAsync(user.MembreId);
                 if (m != null)
                 {
                     user.Membre = m;

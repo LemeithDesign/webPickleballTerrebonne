@@ -12,16 +12,18 @@ namespace webPickleballTerrebonne.Data.Depot
         Task<bool> SauvegarderAsync();
         #endregion Base
         #region Obtenir
-        Task<List<Membre>> ObtenirMembres();
-        Task<Membre?> ObtenirMembreParId(int membreId);
+        Task<List<Membre>> ObtenirMembresAsync();
+        Task<Membre?> ObtenirMembreParIdAsync(int membreId);
         #endregion Obtenir
         #region Créer
         Task<int> CreerMembreAsync(Membre membre);
         //Task<IdentityResult> CreerMembreAsync(string email, string pw);
         #endregion Créer
         #region Modifier
+        Task ModifierMembreAsync(Membre membre);
         #endregion Modifier
         #region Supprimer
+        Task SupprimerMembreAsync(int id);
         #endregion Supprimer
     }
 
@@ -36,13 +38,13 @@ namespace webPickleballTerrebonne.Data.Depot
         }
         #endregion Base
         #region Obtenir
-        public async Task<List<Membre>> ObtenirMembres()
+        public async Task<List<Membre>> ObtenirMembresAsync()
         {
             return await _context.Membres
                 .Include(m => m.ApplicationUser)
                 .ToListAsync();
         }
-        public async Task<Membre?> ObtenirMembreParId(int membreId)
+        public async Task<Membre?> ObtenirMembreParIdAsync(int membreId)
         {
             return await _context.Membres
                 .Include(m => m.ApplicationUser)
@@ -58,9 +60,9 @@ namespace webPickleballTerrebonne.Data.Depot
         }
         #endregion Créer
         #region Modifier
-        public async Task ModifierMembreAsync(Membre entity)
+        public async Task ModifierMembreAsync(Membre membre)
         {
-            _context.Membres.Update(entity);
+            _context.Membres.Update(membre);
             await _context.SaveChangesAsync();
         }
 
@@ -68,7 +70,7 @@ namespace webPickleballTerrebonne.Data.Depot
         #region Supprimer
         public async Task SupprimerMembreAsync(int id)
         {
-            var membre = await ObtenirMembreParId(id);
+            var membre = await ObtenirMembreParIdAsync(id);
             if (membre != null)
             {
                 _context.Membres.Remove(membre);

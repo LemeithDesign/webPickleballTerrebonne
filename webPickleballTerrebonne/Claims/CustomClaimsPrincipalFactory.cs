@@ -14,7 +14,7 @@ namespace webPickleballTerrebonne.Claims
         {
             var identity = await base.GenerateClaimsAsync(user);
 
-            var membre = await _gestMembres.ObtenirMembreParId(user.MembreId);
+            var membre = await _gestMembres.ObtenirMembreParIdAsync(user.MembreId);
             if (membre != null)
             {
                 user.Membre = membre;

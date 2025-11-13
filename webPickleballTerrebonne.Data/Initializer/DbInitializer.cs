@@ -74,6 +74,8 @@ namespace webPickleballTerrebonne.Data.Initializer
 
                 var resultIP = await _userManager.CreateAsync(userIP, "IsaKaf16@");
 
+
+                await GenererMembresAsync();
             }
 
 
@@ -188,5 +190,69 @@ namespace webPickleballTerrebonne.Data.Initializer
                 await context.SaveChangesAsync();
 			}
 		}
+
+        public async Task GenererMembresAsync()
+        {
+            var noms = new[]
+            {
+                "Séguin", "Passarelli", "Lavoie", "Gagnon", "Tremblay", "Roy", "Bouchard", "Morin", "Côté", "Pelletier",
+                "Lefebvre", "Dubois", "Fortin", "Desjardins", "Martel", "Beaulieu", "Simard", "Boucher", "Girard", "Dufresne",
+                "Landry", "Nadeau", "Caron", "Lemieux", "Gervais", "Renaud", "Lapointe", "Barbeau", "Houle", "Cormier",
+                "Massé", "Trudel", "Boivin", "Lemoine", "Perreault", "Gosselin", "Bellemare", "Paradis", "Gagné", "Blais",
+                "Coulombe", "Vachon", "Lemay", "Fontaine", "Roberge", "Hébert", "Marchand", "Drouin", "Gravel", "Arsenault"
+            };
+            var prenoms = new[]
+            {
+                "Félix", "Isabelle", "Marc", "Julie", "Éric", "Sophie", "Luc", "Marie", "Jean", "Chantal",
+                "Denis", "Claire", "Alain", "Nathalie", "Bruno", "Caroline", "Patrick", "Mélanie", "Stéphane", "Audrey",
+                "Michel", "Valérie", "Daniel", "Catherine", "François", "Amélie", "Mathieu", "Élise", "Nicolas", "Laurence",
+                "Pierre", "Geneviève", "André", "Roxanne", "Guillaume", "Annie", "Rémi", "Josée", "Martin", "Karine",
+                "Olivier", "Maude", "Sébastien", "Véronique", "Hugo", "Stéphanie", "Pascal", "Bianca", "Jonathan", "Mélissa"
+            };
+            var villes = new[] { "Terrebonne", "La Plaine", "Lachenaie" };
+            var relations = new[] { "Conjointe", "Frère", "Sœur", "Parent", "Ami" };
+
+            var random = new Random();
+
+            for (int i = 1; i <= 50; i++)
+            {
+                var prenom = prenoms[random.Next(prenoms.Length)];
+                var nom = noms[random.Next(noms.Length)];
+                var ville = villes[random.Next(villes.Length)];
+                var relation = relations[random.Next(relations.Length)];
+
+                var membre = new Membre
+                {
+                    Prenom = prenom,
+                    Nom = nom,
+                    NoMembre = 500 + i,
+                    TelephoneMobile = $"514-{random.Next(100, 999)}-{random.Next(1000, 9999)}",
+                    Adresse = $"{random.Next(100, 9999)} rue {nom}",
+                    Ville = ville,
+                    CodePostal = $"J{random.Next(1, 9)}X {random.Next(1, 9)}{random.Next(1, 9)}{(char)random.Next('A', 'Z')}",
+                    ContactUrgence = $"{prenoms[random.Next(prenoms.Length)]} {noms[random.Next(noms.Length)]}",
+                    ContactUrgenceTelephone = $"514-{random.Next(100, 999)}-{random.Next(1000, 9999)}",
+                    ContactUrgenceRelation = relation
+                };
+
+                int idMembre = await _gestMembre.CreerMembreAsync(membre);
+
+                var user = Activator.CreateInstance<ApplicationUser>();
+                var email = $"{prenom.ToLower()}.{nom.ToLower()}{i}@exemple.com";
+
+                await _userStore.SetUserNameAsync(user, email, CancellationToken.None);
+
+                user.Membre = membre;
+                user.MembreId = idMembre;
+                user.EmailConfirmed = true;
+
+                var result = await _userManager.CreateAsync(user, "IsaKaf16@");
+                if (!result.Succeeded)
+                {
+                    // Log or handle errors
+                    Console.WriteLine($"Erreur création utilisateur {email}: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+                }
+            }
+        }
     }
 }
