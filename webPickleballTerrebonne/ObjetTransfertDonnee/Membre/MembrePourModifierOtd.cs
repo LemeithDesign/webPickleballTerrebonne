@@ -2,24 +2,12 @@
 
 namespace webPickleballTerrebonne.ObjetTransfertDonnee.Membre
 {
-    public class MembrePourCreerOtd
+    public class MembrePourModifierOtd
     {
-        [Display(Name = "Adresse courriel")]
-        [Required(ErrorMessage = "Le champ {0} est obligatoire.")]
-        [EmailAddress(ErrorMessage = "Format d'adresse courriel invalide.")]
-        [StringLength(255, ErrorMessage = "Le champ {0} ne doit pas dépasser {1} caractères.")]
-        public string Courriel { get; set; } = string.Empty;
+        public int Id { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "Le {0} doit avoir au moins {2} et au maximum {1} caractères.", MinimumLength = 8)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Mot de passe")]
-        public string Password { get; set; } = string.Empty;
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirmation du mot de passe")]
-        [Compare("Password", ErrorMessage = "Les mots de passe ne correspondent pas.")]
-        public string ConfirmPassword { get; set; } = string.Empty;
+        [Display(Name = "Numéro de membre")]
+        public int NoMembre { get; set; }
 
         [Display(Name = "Nom")]
         [Required(ErrorMessage = "Le champ {0} est requis.")]

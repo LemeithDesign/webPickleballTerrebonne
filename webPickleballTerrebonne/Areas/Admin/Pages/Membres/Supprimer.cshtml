@@ -1,0 +1,27 @@
+﻿@page "{idMembre:int}"
+@model webPickleballTerrebonne.Areas.Admin.Pages.Membres.SupprimerModel
+@{
+    ViewData["Title"] = "Supprimer un membre";
+}
+<div class="container">
+    <h3 class="py-3">Supprimer le membre - @Model.MembreOtd.Prenom @Model.MembreOtd.Nom</h3>
+    <div class="bg-light p-3">
+        <h4>Souhaitez-vous vraiment procéder à la suppression de ce membre?</h4>
+        <dl>
+            <dt>Numéro de membre</dt>
+            <dd>@Model.MembreOtd.NoMembre</dd>
+            <dt>Nom</dt>
+            <dd>@Model.MembreOtd.Nom</dd>
+            <dt>Prénom</dt>
+            <dd>@Model.MembreOtd.Prenom</dd>
+        </dl>
+        <div class="text-end mt-3">
+            <form method="post">
+                @* <input type="hidden" asp-for="ProjetOtd.IdProjet" /> *@
+@*                 <button type="submit" class="btn btn-primary">Désactiver le membre</button>
+ *@                <button type="submit" class="btn btn-primary">Supprimer définitivement</button>
+                <a asp-area="admin" asp-page="/membres/index" class="btn btn-danger">Annuler</a>
+            </form>
+        </div>
+    </div>
+</div>

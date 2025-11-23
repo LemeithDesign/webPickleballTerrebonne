@@ -1,0 +1,121 @@
+﻿@page "{idMembre:int}"
+@model webPickleballTerrebonne.Areas.Admin.Pages.Membres.DetailsModel
+@{
+    Model.ViewData["Title"] = $"Membre - {Model.MembreOtd.Prenom} {Model.MembreOtd.Nom}";
+}
+<div class="container">
+    <div class="card mt-3">
+        <h5 class="card-header">Détails du membre</h5>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-4 mb-3">
+                    <label asp-for="MembreOtd.NoMembre" class="small text-muted"></label>
+                    <div class="lead">@Model.MembreOtd.NoMembre</div>
+                </div>
+                <div class="col-sm-4 mb-3">
+                    <div class="small text-muted">Statut</div>
+                    <div class="lead">@Model.MembreOtd.MembreActif</div>
+                </div>
+                @if (Model.MembreOtd.MembreActif == "Actif")
+                {
+                    if (Model.MembreOtd.DateMembreActif.HasValue)
+                    {
+                        <div class="col-sm-4 mb-3">
+                            <div class="small text-muted">Actif depuis</div>
+                            <div class="lead">@Model.MembreOtd.DateMembreActif.Value.ToShortDateString()</div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    if (Model.MembreOtd.DateMembreInactif.HasValue)
+                    {
+                        <div class="col-sm-4 mb-3">
+                            <div class="small text-muted">Inactif depuis</div>
+                            <div class="lead">@Model.MembreOtd.DateMembreInactif.Value.ToShortDateString()</div>
+                        </div>
+                    }
+                }                
+            </div>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <h5 class="card-header">Identification</h5>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6 mb-3">
+                    <label asp-for="MembreOtd.Nom" class="small text-muted"></label>
+                    <div class="lead">@Model.MembreOtd.Nom</div>
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <label asp-for="MembreOtd.Prenom" class="small text-muted"></label>
+                    <div class="lead">@Model.MembreOtd.Prenom</div>
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <label asp-for="MembreOtd.Courriel" class="small text-muted"></label>
+                    <div class="lead">@Model.MembreOtd.Courriel</div>
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <label asp-for="MembreOtd.TelephoneMobile" class="small text-muted"></label>
+                    <div class="lead">@Model.MembreOtd.TelephoneMobile</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <h5 class="card-header">Adresse</h5>
+        <div class="card-body">
+            <div class="row">
+                @if (string.IsNullOrEmpty(Model.MembreOtd.Appartement) == false)
+                {
+                    <div class="col-sm-9 mb-3">
+                        <label asp-for="MembreOtd.Adresse" class="small text-muted"></label>
+                        <div class="lead">@Model.MembreOtd.Adresse</div>
+                    </div>
+                    <div class="col-sm-3 mb-3">
+                        <label asp-for="MembreOtd.Appartement" class="small text-muted"></label>
+                        <div class="lead">@Model.MembreOtd.Appartement</div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-sm-12 mb-3">
+                        <label asp-for="MembreOtd.Adresse" class="small text-muted"></label>
+                        <div class="lead">@Model.MembreOtd.Adresse</div>
+                    </div>
+                }
+                <div class="col-sm-6 mb-3">
+                    <label asp-for="MembreOtd.Ville" class="small text-muted"></label>
+                    <div class="lead">@Model.MembreOtd.Ville</div>
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <label asp-for="MembreOtd.CodePostal" class="small text-muted"></label>
+                    <div class="lead">@Model.MembreOtd.CodePostal</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card my-3">
+        <h5 class="card-header">Contact d'urgence</h5>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6 mb-3">
+                    <label asp-for="MembreOtd.ContactUrgenceNom" class="small text-muted"></label>
+                    <div class="lead">@Model.MembreOtd.ContactUrgenceNom</div>
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <label asp-for="MembreOtd.ContactUrgencePrenom" class="small text-muted"></label>
+                    <div class="lead">@Model.MembreOtd.ContactUrgencePrenom</div>
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <label asp-for="MembreOtd.ContactUrgenceTelephone" class="small text-muted"></label>
+                    <div class="lead">@Model.MembreOtd.ContactUrgenceTelephone</div>
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <label asp-for="MembreOtd.ContactUrgenceRelation" class="small text-muted"></label>
+                    <div class="lead">@Model.MembreOtd.ContactUrgenceRelation</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

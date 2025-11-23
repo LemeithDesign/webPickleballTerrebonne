@@ -23,6 +23,7 @@ namespace webPickleballTerrebonne.Data.Depot
         Task ModifierMembreAsync(Membre membre);
         #endregion Modifier
         #region Supprimer
+        Task SupprimerMembreAsync(Membre membre);
         Task SupprimerMembreAsync(int id);
         #endregion Supprimer
     }
@@ -54,9 +55,26 @@ namespace webPickleballTerrebonne.Data.Depot
         #region Créer
         public async Task<int> CreerMembreAsync(Membre membre)
         {
-            await _context.Membres.AddAsync(membre);
-            await SauvegarderAsync();
-            return membre.Id;
+            using var transaction = await _context.Database.BeginTransactionAsync(System.Data.IsolationLevel.Serializable);
+
+            try
+            {
+
+                int nextNoMembre = context.Membres.Any()
+                        ? context.Membres.Max(m => m.NoMembre) + 1
+                        : 1;
+                membre.NoMembre = nextNoMembre;
+
+                await _context.Membres.AddAsync(membre);
+                await SauvegarderAsync();
+                await transaction.CommitAsync();
+                return membre.Id;
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
         }
         #endregion Créer
         #region Modifier
@@ -68,13 +86,17 @@ namespace webPickleballTerrebonne.Data.Depot
 
         #endregion Modifier
         #region Supprimer
+        public async Task SupprimerMembreAsync(Membre membre)
+        {
+            _context.Membres.Remove(membre);
+            await _context.SaveChangesAsync();
+        }
         public async Task SupprimerMembreAsync(int id)
         {
             var membre = await ObtenirMembreParIdAsync(id);
             if (membre != null)
             {
-                _context.Membres.Remove(membre);
-                await _context.SaveChangesAsync();
+                await SupprimerMembreAsync(membre);
             }
         }
         #endregion Supprimer

@@ -12,5 +12,7 @@
         //[Required, StringLength(100)]
         public string Prenom { get; set; } = string.Empty;
 
+        public string MembreActif { get; set; } = string.Empty;
+        public DateTime Depuis { get; set; }
     }
 }

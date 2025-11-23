@@ -1,5 +1,6 @@
 ﻿using Mapster;
 using webPickleballTerrebonne.ObjetTransfertDonnee.Inscription;
+using webPickleballTerrebonne.ObjetTransfertDonnee.Membre;
 using webPickleballTerrebonne.ObjetTransfertDonnee.PlagesHoraires;
 
 namespace webPickleballTerrebonne.ObjetTransfertDonnee
@@ -26,6 +27,11 @@ namespace webPickleballTerrebonne.ObjetTransfertDonnee
                 .Map(dest => dest.CodePostal, src => src.Terrain.CodePostal)
                 .Map(dest => dest.NomResponsable, src => $"{src.Responsable.Prenom} {src.Responsable.Nom}");
 
+            config.NewConfig<Data.Entites.Membre, MembrePourIndexOtd>()
+                .Map(dest => dest.Depuis, src => src.ApplicationUser.MembreActif ? src.DateMembreActif.Value : src.DateMembreInactif.Value);
+
+            config.NewConfig<Data.Entites.Membre, MembrePourDetailsOtd>()
+                .Map(dest => dest.Courriel, src => src.ApplicationUser.Email);
 
         }
     }

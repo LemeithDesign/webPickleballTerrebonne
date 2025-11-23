@@ -1,35 +1,17 @@
-﻿@page
-@model webPickleballTerrebonne.Areas.Admin.Pages.Membres.CreerModel
+﻿@page "{idMembre:int}"
+@model webPickleballTerrebonne.Areas.Admin.Pages.Membres.ModifierModel
 @{
-    Model.ViewData["Title"] = "Ajouter un membre";
+   Model.ViewData["Title"] = "Modifier un membre";
 }
+
 <div class="container">
-    <h3 class="py-3">Ajouter un nouveau membre</h3>
+    <h3 class="py-3">Modifier un membre</h3>
     <div class="bg-light mb-3 p-3">
         <div class="text-end"><span style='color:red'>*</span> Information requise</div>
         <form method="post">
-            <div class="h5 py-2 mb-3 border-bottom border-dark border-1">Information de connexion</div>
-            <div class="row">
-                <div class="col-md-12 mb-3">
-                    <label class="form-label">@Html.Raw($"{Html.DisplayNameFor(m => m.MembreOtd.Courriel)} <span style='color:red'>*</span>")</label>
-                    <input asp-for="MembreOtd.Courriel" class="form-control" />
-                    <span asp-validation-for="MembreOtd.Courriel" class="text-danger"></span>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">@Html.Raw($"{Html.DisplayNameFor(m => m.MembreOtd.Password)} <span style='color:red'>*</span>")</label>
-                    <input asp-for="MembreOtd.Password" class="form-control" />
-                    <span asp-validation-for="MembreOtd.Password" class="text-danger"></span>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">@Html.Raw($"{Html.DisplayNameFor(m => m.MembreOtd.ConfirmPassword)} <span style='color:red'>*</span>")</label>
-                    <input asp-for="MembreOtd.ConfirmPassword" class="form-control" />
-                    <span asp-validation-for="MembreOtd.ConfirmPassword" class="text-danger"></span>
-                </div>
-            </div>
-
+            <input asp-for="MembreOtd.Id" type="hidden" />
             <div class="h5 py-2 mb-3 border-bottom border-dark border-1">Identification du membre</div>
             <div class="row">
-
                 <div class="col-md-6 mb-3">
                     <label class="form-label">@Html.Raw($"{Html.DisplayNameFor(m => m.MembreOtd.Nom)} <span style='color:red'>*</span>")</label>
                     <input asp-for="MembreOtd.Nom" class="form-control" />
@@ -39,6 +21,11 @@
                     <label class="form-label">@Html.Raw($"{Html.DisplayNameFor(m => m.MembreOtd.Prenom)} <span style='color:red'>*</span>")</label>
                     <input asp-for="MembreOtd.Prenom" class="form-control" />
                     <span asp-validation-for="MembreOtd.Prenom" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="MembreOtd.NoMembre" class="form-label"></label>
+                    <input asp-for="MembreOtd.NoMembre" class="form-control" />
+                    <span asp-validation-for="MembreOtd.NoMembre" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="form-label">@Html.Raw($"{Html.DisplayNameFor(m => m.MembreOtd.TelephoneMobile)} <span style='color:red'>*</span>")</label>

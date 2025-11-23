@@ -174,6 +174,9 @@ namespace webPickleballTerrebonne.Data.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("MembreActif")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("MembreId")
                         .HasColumnType("INTEGER");
 
@@ -243,7 +246,12 @@ namespace webPickleballTerrebonne.Data.Migrations
                         .HasMaxLength(7)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ContactUrgence")
+                    b.Property<string>("ContactUrgenceNom")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ContactUrgencePrenom")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
@@ -256,6 +264,15 @@ namespace webPickleballTerrebonne.Data.Migrations
                     b.Property<string>("ContactUrgenceTelephone")
                         .IsRequired()
                         .HasMaxLength(12)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("DateCreation")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("DateMembreActif")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("DateMembreInactif")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("NoMembre")

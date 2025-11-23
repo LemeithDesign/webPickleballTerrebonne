@@ -6,5 +6,6 @@ namespace webPickleballTerrebonne.Data.Entites
     {
         public int MembreId { get; set; }
         public virtual Membre Membre { get; set; } = default!;
+        public bool MembreActif { get; set; } = true;
     }
 }

@@ -16,5 +16,23 @@
       "enabled": false
     },
     "includeInProject": false
+  },
+  {
+    "outputFile": "wwwroot/css/form.min.css",
+    "inputFile": "Sass/Formulaire/Formulaire.scss",
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "includeInProject": true,
+    "sourceMap": true
+  },
+  {
+    "outputFile": "Sass/Formulaire/form.css",
+    "inputFile": "Sass/Formulaire/Formulaire.scss",
+    "minify": {
+      "enabled": false
+    },
+    "includeInProject": false
   }
 ]

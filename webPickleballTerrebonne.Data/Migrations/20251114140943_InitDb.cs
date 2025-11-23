@@ -116,6 +116,7 @@ namespace webPickleballTerrebonne.Data.Migrations
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
                     MembreId = table.Column<int>(type: "INTEGER", nullable: false),
+                    MembreActif = table.Column<bool>(type: "INTEGER", nullable: false),
                     UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
@@ -162,8 +163,11 @@ namespace webPickleballTerrebonne.Data.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    NoMembre = table.Column<int>(type: "INTEGER", nullable: false),
                     AppUserId = table.Column<string>(type: "TEXT", nullable: false),
+                    DateCreation = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    DateMembreActif = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    DateMembreInactif = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    NoMembre = table.Column<int>(type: "INTEGER", nullable: false),
                     Nom = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     Prenom = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     TelephoneMobile = table.Column<string>(type: "TEXT", maxLength: 12, nullable: true),
@@ -171,7 +175,8 @@ namespace webPickleballTerrebonne.Data.Migrations
                     Appartement = table.Column<string>(type: "TEXT", maxLength: 10, nullable: true),
                     Ville = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     CodePostal = table.Column<string>(type: "TEXT", maxLength: 7, nullable: false),
-                    ContactUrgence = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    ContactUrgenceNom = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    ContactUrgencePrenom = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     ContactUrgenceTelephone = table.Column<string>(type: "TEXT", maxLength: 12, nullable: false),
                     ContactUrgenceRelation = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     PlageHoraireIdPlageHoraire = table.Column<int>(type: "INTEGER", nullable: true)

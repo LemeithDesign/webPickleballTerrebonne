@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Globalization;
+using System.Text;
 using webPickleballTerrebonne.Data.Contexts;
 using webPickleballTerrebonne.Data.Depot;
 using webPickleballTerrebonne.Data.Entites;
@@ -21,16 +23,21 @@ namespace webPickleballTerrebonne.Data.Initializer
                 {
                     Prenom = "Félix",
                     Nom = "Séguin",
-                    NoMembre = 576,
+                    DateCreation = new(2022, 5, 15),
+                    DateMembreActif = new(2022, 5, 15),
+                    DateMembreInactif = null,
                     TelephoneMobile = "514-706-5848",
                     Adresse = "1045 rue de Louvigny",
                     Ville = "Terrebonne",
                     CodePostal = "J6X 1X2",
-                    ContactUrgence = "Isabelle Passarelli",
+                    ContactUrgenceNom = "Passarelli",
+                    ContactUrgencePrenom = "Isabelle",
                     ContactUrgenceTelephone = "514-609-5409",
                     ContactUrgenceRelation = "Conjointe"
+
                 };
                 int idMembreFS = await _gestMembre.CreerMembreAsync(membreFS);
+                membreFS.NoMembre = 576;
 
                 // Créer un appUser:
 
@@ -41,7 +48,9 @@ namespace webPickleballTerrebonne.Data.Initializer
 
                 userFS.Membre = membreFS;
                 userFS.MembreId = idMembreFS;
+                userFS.Email = "felix.a.seguin@gmail.com";
                 userFS.EmailConfirmed = true;
+                userFS.MembreActif = true;
 
                 var resultFS = await _userManager.CreateAsync(userFS, "IsaKaf16@");
 
@@ -50,27 +59,32 @@ namespace webPickleballTerrebonne.Data.Initializer
                 {
                     Prenom = "Isabelle",
                     Nom = "Passarelli",
-                    NoMembre = 577,
+                    DateCreation = new(2022, 5, 15),
+                    DateMembreActif = new(2022, 5, 15),
+                    DateMembreInactif = null,
                     TelephoneMobile = "514-609-5409",
                     Adresse = "1045 rue de Louvigny",
                     Ville = "Terrebonne",
                     CodePostal = "J6X 1X2",
-                    ContactUrgence = "Félix Séguin",
+                    ContactUrgenceNom = "Séguin",
+                    ContactUrgencePrenom = "Félix",
                     ContactUrgenceTelephone = "514-706-5848",
                     ContactUrgenceRelation = "Conjoint"
                 };
                 int idMembreIP = await _gestMembre.CreerMembreAsync(membreIP);
+                membreIP.NoMembre = 577;
 
                 // Créer un appUser:
 
                 ApplicationUser userIP = Activator.CreateInstance<ApplicationUser>();
 
-
                 await _userStore.SetUserNameAsync(userIP, "isabelle.l.passarelli@gmail.com", CancellationToken.None);
 
                 userIP.Membre = membreIP;
                 userIP.MembreId = idMembreIP;
+                userIP.Email = "isabelle.l.passarelli@gmail.com";
                 userIP.EmailConfirmed = true;
+                userIP.MembreActif = true;
 
                 var resultIP = await _userManager.CreateAsync(userIP, "IsaKaf16@");
 
@@ -79,7 +93,7 @@ namespace webPickleballTerrebonne.Data.Initializer
             }
 
 
-            if(!context.Terrains.Any())
+            if (!context.Terrains.Any())
             {
                 Terrain terrain1 = new()
                 {
@@ -147,7 +161,7 @@ namespace webPickleballTerrebonne.Data.Initializer
                 };
 
                 await context.Terrains.AddRangeAsync(
-                    terrain1, 
+                    terrain1,
                     terrain2,
                     terrain3,
                     terrain4,
@@ -160,7 +174,7 @@ namespace webPickleballTerrebonne.Data.Initializer
             }
 
 
-            if(!context.PlagesHoraires.Any())
+            if (!context.PlagesHoraires.Any())
             {
                 // Mercredi
                 Terrain terrain8 = context.Terrains.FirstOrDefault(t => t.Nom.Contains("La Sablière"))!;
@@ -177,19 +191,19 @@ namespace webPickleballTerrebonne.Data.Initializer
                     HeureFin = new TimeOnly(21, 30, 0),   // 21h30
 
                     QtePlaceMaximale = 21,
-					QtePlaceOptimale = 16,
+                    QtePlaceOptimale = 16,
 
                     ResponsableId = felix.Id,
 
-					MembresReguliers =membres,
+                    MembresReguliers = membres,
 
-					TerrainId = terrain8.IdTerrain,
-				};
+                    TerrainId = terrain8.IdTerrain,
+                };
 
                 await context.PlagesHoraires.AddAsync(plageHoraire);
                 await context.SaveChangesAsync();
-			}
-		}
+            }
+        }
 
         public async Task GenererMembresAsync()
         {
@@ -221,16 +235,57 @@ namespace webPickleballTerrebonne.Data.Initializer
                 var ville = villes[random.Next(villes.Length)];
                 var relation = relations[random.Next(relations.Length)];
 
+                #region Dates
+                // Dates aléatoires pour la création du membre
+                // Définir la date de début et la date de fin
+                DateTime startDate = new DateTime(2005, 1, 1);
+                DateTime endDate = DateTime.Today;
+
+                // Calculer le nombre total de jours entre les deux dates
+                int range = (endDate - startDate).Days;
+
+                // Générer un nombre aléatoire de jours
+                int randomDays = random.Next(0, range + 1);
+
+                // Calculer la date aléatoire
+                DateTime randomDate = startDate.AddDays(randomDays);
+
+                // Membre actif ou inactif
+                bool membreActif = random.Next(0, 2) == 0; // 50% de chances
+                DateTime? randomDateActif, randomDateInactif;
+                if (membreActif)
+                {
+                    randomDateInactif = null;
+
+                    startDate = randomDate;
+                    range = (endDate - startDate).Days;
+                    randomDays = random.Next(0, range + 1);
+                    randomDateActif = startDate.AddDays(randomDays);
+                }
+                else
+                {
+                    randomDateActif = null;
+
+                    startDate = randomDate;
+                    range = (endDate - startDate).Days;
+                    randomDays = random.Next(0, range + 1);
+                    randomDateInactif = startDate.AddDays(randomDays);
+                }
+                #endregion Dates
+
                 var membre = new Membre
                 {
                     Prenom = prenom,
                     Nom = nom,
-                    NoMembre = 500 + i,
+                    DateCreation = randomDate,
+                    DateMembreActif = randomDateActif,
+                    DateMembreInactif = randomDateInactif,
                     TelephoneMobile = $"514-{random.Next(100, 999)}-{random.Next(1000, 9999)}",
                     Adresse = $"{random.Next(100, 9999)} rue {nom}",
                     Ville = ville,
                     CodePostal = $"J{random.Next(1, 9)}X {random.Next(1, 9)}{random.Next(1, 9)}{(char)random.Next('A', 'Z')}",
-                    ContactUrgence = $"{prenoms[random.Next(prenoms.Length)]} {noms[random.Next(noms.Length)]}",
+                    ContactUrgenceNom = $"{noms[random.Next(noms.Length)]}",
+                    ContactUrgencePrenom = $"{prenoms[random.Next(prenoms.Length)]}",
                     ContactUrgenceTelephone = $"514-{random.Next(100, 999)}-{random.Next(1000, 9999)}",
                     ContactUrgenceRelation = relation
                 };
@@ -238,21 +293,43 @@ namespace webPickleballTerrebonne.Data.Initializer
                 int idMembre = await _gestMembre.CreerMembreAsync(membre);
 
                 var user = Activator.CreateInstance<ApplicationUser>();
-                var email = $"{prenom.ToLower()}.{nom.ToLower()}{i}@exemple.com";
+                var email = $"{EnleverAccents(prenom.ToLower())}.{EnleverAccents(nom.ToLower())}{i}@exemple.com";
 
                 await _userStore.SetUserNameAsync(user, email, CancellationToken.None);
 
+                user.Email = email;
                 user.Membre = membre;
                 user.MembreId = idMembre;
                 user.EmailConfirmed = true;
+                user.MembreActif = membreActif;
 
                 var result = await _userManager.CreateAsync(user, "IsaKaf16@");
                 if (!result.Succeeded)
                 {
+                    await _gestMembre.SupprimerMembreAsync(membre);
                     // Log or handle errors
                     Console.WriteLine($"Erreur création utilisateur {email}: {string.Join(", ", result.Errors.Select(e => e.Description))}");
                 }
             }
+        }
+
+
+        private string EnleverAccents(string texte)
+        {
+            if (string.IsNullOrEmpty(texte))
+                return texte;
+
+            var normalized = texte.Normalize(NormalizationForm.FormD);
+            var sb = new StringBuilder();
+
+            foreach (var ch in normalized)
+            {
+                var uc = CharUnicodeInfo.GetUnicodeCategory(ch);
+                if (uc != UnicodeCategory.NonSpacingMark)
+                    sb.Append(ch);
+            }
+
+            return sb.ToString().Normalize(NormalizationForm.FormC);
         }
     }
 }
