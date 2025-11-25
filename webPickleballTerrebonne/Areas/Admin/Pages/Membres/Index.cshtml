@@ -36,19 +36,20 @@
     <table class="table table-sm align-middle">
         <thead>
             <tr>
-                <th class="col-2">
+                <th class="col-1">
                     <a asp-area="admin" asp-page="/membres/index" asp-route-sortOrder="@Model.TrierNom" class="text-decoration-none text-black">Nom</a>
                 </th>
-                <th class="col-2">
+                <th class="col-1">
                     <a asp-area="admin" asp-page="/membres/index" asp-route-sortOrder="@Model.TrierPrenom" class="text-decoration-none text-black">Prénom</a>
 
                 </th>
-                <th class="col-1">Actif</th>
-                <th class="col-1">
+                <th class="col-1 text-center">Actif</th>
+                <th class="col-1 text-center">
                     <a asp-area="admin" asp-page="/membres/index" asp-route-sortOrder="@Model.TrierDate" class="text-decoration-none text-black">Depuis</a>
                 </th>
-                <th class="col-3"></th>
-                <td class="col-3 text-end"><a class="btn btn-outline-dark" asp-area="admin" asp-page="/membres/creer">Ajouter un membre</a></td>
+                <th class="col-1 text-center">Rôle</th>
+                <th class="col-5"></th>
+                <td class="col-2 text-end"><a class="btn btn-outline-dark" asp-area="admin" asp-page="/membres/creer">Ajouter un membre</a></td>
             </tr>
         </thead>
         <tbody>
@@ -57,8 +58,9 @@
                 <tr>
                     <td>@membre.Nom</td>
                     <td>@membre.Prenom</td>
-                    <td>@membre.MembreActif</td>
-                    <td>@membre.Depuis.ToShortDateString()</td>
+                    <td class="text-center">@membre.MembreActif</td>
+                    <td class="text-center">@membre.Depuis.ToShortDateString()</td>
+                    <td class="text-center">@membre.Roles[0]</td>
                     <td></td>
                     <td class="text-end">
                         <a asp-area="admin" asp-page="/membres/details" asp-route-idMembre="@membre.Id" class="btn btn-outline-dark"><span class="materialIcons">arrow_outward</span></a>

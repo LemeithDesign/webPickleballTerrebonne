@@ -1,7 +1,10 @@
 using Mapster;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using webPickleballTerrebonne.Data.Constantes;
 using webPickleballTerrebonne.Data.Depot;
 using webPickleballTerrebonne.Data.Entites;
 using webPickleballTerrebonne.ObjetTransfertDonnee.Membre;
@@ -17,8 +20,11 @@ namespace webPickleballTerrebonne.Areas.Admin.Pages.Membres
         [BindProperty]
         public MembrePourCreerOtd MembreOtd { get; set; } = default!;
 
+        public IEnumerable<SelectListItem> RolesDisponibles { get; private set; } = default!;
+
         public void OnGet()
         {
+            RolesDisponibles = NomsRoles.Roles.Select(r => new SelectListItem { Value = r, Text = r });
         }
 
         public async Task<IActionResult> OnPostAsync()

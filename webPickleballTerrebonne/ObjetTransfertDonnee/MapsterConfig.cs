@@ -29,10 +29,9 @@ namespace webPickleballTerrebonne.ObjetTransfertDonnee
 
             config.NewConfig<Data.Entites.Membre, MembrePourIndexOtd>()
                 .Map(dest => dest.Depuis, src => src.ApplicationUser.MembreActif ? src.DateMembreActif.Value : src.DateMembreInactif.Value);
-
+                
             config.NewConfig<Data.Entites.Membre, MembrePourDetailsOtd>()
                 .Map(dest => dest.Courriel, src => src.ApplicationUser.Email);
-
         }
     }
 }

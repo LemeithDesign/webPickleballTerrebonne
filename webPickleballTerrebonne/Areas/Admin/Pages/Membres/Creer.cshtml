@@ -1,4 +1,5 @@
 ﻿@page
+@using webPickleballTerrebonne.Data.Constantes
 @model webPickleballTerrebonne.Areas.Admin.Pages.Membres.CreerModel
 @{
     Model.ViewData["Title"] = "Ajouter un membre";
@@ -8,6 +9,23 @@
     <div class="bg-light mb-3 p-3">
         <div class="text-end"><span style='color:red'>*</span> Information requise</div>
         <form method="post">
+            @if (User.IsInRole(NomsRoles.Admin))
+            {
+                <div class="h5 py-2 mb-3 border-bottom border-dark border-1">Rôle du membre</div>
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label class="form-label">Choisir un rôle pour le membre:</label>
+                        <select asp-for="MembreOtd.Role" asp-items="Model.RolesDisponibles" class="form-control">
+                            <option value="">-- Sélectionner un rôle --</option>
+                        </select>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <input type="hidden" asp-for="MembreOtd.Role" value="@NomsRoles.User" />
+            }
+
             <div class="h5 py-2 mb-3 border-bottom border-dark border-1">Information de connexion</div>
             <div class="row">
                 <div class="col-md-12 mb-3">

@@ -14,6 +14,8 @@ namespace webPickleballTerrebonne.Data.Depot
         #region Obtenir
         Task<List<Membre>> ObtenirMembresAsync();
         Task<Membre?> ObtenirMembreParIdAsync(int membreId);
+
+        Task<IList<string>> ObtenirRolesMembreParIdAsync(int membreId);
         #endregion Obtenir
         #region Créer
         Task<int> CreerMembreAsync(Membre membre);
@@ -49,8 +51,21 @@ namespace webPickleballTerrebonne.Data.Depot
         {
             return await _context.Membres
                 .Include(m => m.ApplicationUser)
-                .FirstOrDefaultAsync(m => m.Id == membreId);
+                .FirstOrDefaultAsync(m => m.Id == membreId);            
         }
+
+        public async Task<IList<string>> ObtenirRolesMembreParIdAsync(int membreId)
+        {
+            var membre =  await ObtenirMembreParIdAsync(membreId);
+            if (membre == null || membre.ApplicationUser == null)
+            {
+                return [];
+            }
+            return await _userManager.GetRolesAsync(membre.ApplicationUser);
+        }
+
+
+
         #endregion Obtenir
         #region Créer
         public async Task<int> CreerMembreAsync(Membre membre)

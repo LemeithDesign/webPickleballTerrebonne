@@ -1,12 +1,15 @@
 using Mapster;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using webPickleballTerrebonne.Data.Constantes;
 using webPickleballTerrebonne.Data.Depot;
 using webPickleballTerrebonne.Data.Entites;
 using webPickleballTerrebonne.ObjetTransfertDonnee.Membre;
 
 namespace webPickleballTerrebonne.Areas.Admin.Pages.Membres
 {
+    //[Authorize(Policy = NomsStrategiesAuthorisation.Admin)]
     public class IndexModel(IMembreData gestMembres) : PageModel
     {
         private readonly IMembreData _gestMembres = gestMembres;
@@ -23,12 +26,19 @@ namespace webPickleballTerrebonne.Areas.Admin.Pages.Membres
         public async Task OnGetAsync(string sortOrder, string searchString)
         {
             List<Membre> lsMembresDb = await _gestMembres.ObtenirMembresAsync();
-            List<MembrePourIndexOtd> membresOtd = lsMembresDb.Adapt<List<MembrePourIndexOtd>>();
+            List<MembrePourIndexOtd> membresOtd = [];
+            foreach (var membre in lsMembresDb)
+            {
+                IList<string> lsRoles = await _gestMembres.ObtenirRolesMembreParIdAsync(membre.Id);
+                MembrePourIndexOtd membreOtd = membre.Adapt<MembrePourIndexOtd>();
+                membreOtd.Roles = lsRoles;
+                membresOtd.Add(membreOtd);
+            }
+            //List<MembrePourIndexOtd> membresOtd = lsMembresDb.Adapt<List<MembrePourIndexOtd>>();
 
             TrierNom = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             TrierPrenom = sortOrder == "prenom" ? "prenom_desc" : "prenom";
             TrierDate = sortOrder == "date" ? "date_desc" : "date";
-
             
             CurrentFilter = searchString;
 

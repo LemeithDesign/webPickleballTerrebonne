@@ -75,5 +75,8 @@ namespace webPickleballTerrebonne.ObjetTransfertDonnee.Membre
         [Display(Name = "Relation avec le joueur")]
         [StringLength(100, ErrorMessage = "Le champ {0} doit avoir au maximum {1} caractères.")]
         public string? ContactUrgenceRelation { get; set; } = null;
+
+
+        public string? Role { get; set; } = null;
     }
 }

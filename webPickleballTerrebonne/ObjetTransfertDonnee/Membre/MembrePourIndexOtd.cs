@@ -14,5 +14,7 @@
 
         public string MembreActif { get; set; } = string.Empty;
         public DateTime Depuis { get; set; }
+
+        public IList<string> Roles { get; set; } = [];
     }
 }

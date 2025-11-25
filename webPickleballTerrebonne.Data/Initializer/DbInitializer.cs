@@ -1,17 +1,24 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Globalization;
 using System.Text;
+using webPickleballTerrebonne.Data.Constantes;
 using webPickleballTerrebonne.Data.Contexts;
 using webPickleballTerrebonne.Data.Depot;
 using webPickleballTerrebonne.Data.Entites;
 
 namespace webPickleballTerrebonne.Data.Initializer
 {
-    public class DbInitializer(IMembreData gestMembre, IUserStore<ApplicationUser> userStore, UserManager<ApplicationUser> userManager)
+    public class DbInitializer(
+        IMembreData gestMembre
+        , IUserStore<ApplicationUser> userStore
+        , UserManager<ApplicationUser> userManager
+        , RoleManager<IdentityRole> roleManager
+        )
     {
         private readonly UserManager<ApplicationUser> _userManager = userManager;
         private readonly IUserStore<ApplicationUser> _userStore = userStore;
         private readonly IMembreData _gestMembre = gestMembre;
+        private readonly RoleManager<IdentityRole> _roleManager = roleManager;
 
         public async Task Seed(DataContext context)
         {
@@ -54,6 +61,11 @@ namespace webPickleballTerrebonne.Data.Initializer
 
                 var resultFS = await _userManager.CreateAsync(userFS, "IsaKaf16@");
 
+                if (!await _roleManager.RoleExistsAsync(NomsRoles.Admin))
+                {
+                    await _roleManager.CreateAsync(new IdentityRole(NomsRoles.Admin));
+                }
+                await _userManager.AddToRoleAsync(userFS, NomsRoles.Admin);
 
                 Membre membreIP = new()
                 {
@@ -88,7 +100,14 @@ namespace webPickleballTerrebonne.Data.Initializer
 
                 var resultIP = await _userManager.CreateAsync(userIP, "IsaKaf16@");
 
+                if (!await _roleManager.RoleExistsAsync(NomsRoles.Membre))
+                {
+                    await _roleManager.CreateAsync(new IdentityRole(NomsRoles.Membre));
+                }
+                await _userManager.AddToRoleAsync(userIP, NomsRoles.Membre);
 
+
+                // Générer des membres supplémentaires
                 await GenererMembresAsync();
             }
 
@@ -309,7 +328,14 @@ namespace webPickleballTerrebonne.Data.Initializer
                     await _gestMembre.SupprimerMembreAsync(membre);
                     // Log or handle errors
                     Console.WriteLine($"Erreur création utilisateur {email}: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+                    continue;
                 }
+                if (!await _roleManager.RoleExistsAsync(NomsRoles.User))
+                {
+                    await _roleManager.CreateAsync(new IdentityRole(NomsRoles.User));
+                }
+                await _userManager.AddToRoleAsync(user, NomsRoles.User);
+
             }
         }
 

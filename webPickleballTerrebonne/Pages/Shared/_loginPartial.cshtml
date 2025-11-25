@@ -5,11 +5,21 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
+@{
+    string nom = string.Empty, prenom = string.Empty;
+    var user = await UserManager.GetUserAsync(User);
+    if (user != null && user.Membre != null)
+    {
+        nom = user.Membre.Nom;
+        prenom = user.Membre.Prenom;
+    }
+}
+
 <ul class="navbar-nav ms-auto">
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.FindFirst("Prenom")?.Value @User.FindFirst("Nom")?.Value</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@prenom @nom</a>
         </li>
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
