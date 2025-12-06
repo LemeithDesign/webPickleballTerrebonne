@@ -16,13 +16,18 @@ namespace webPickleballTerrebonne.Areas.Admin.Pages.Membres
 
         public MembrePourDetailsOtd MembreOtd { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGet()
         {
-            Membre? membreDb = await _gestMembres.ObtenirMembreParIdAsync(idMembre);
-            if (membreDb is null)
-                return RedirectToPage("/membres/index");
-            MembreOtd = membreDb.Adapt<MembrePourDetailsOtd>();
-            return Page();
+            return NotFound();
         }
+
+        //public async Task<IActionResult> OnGetAsync()
+        //{
+        //    Membre? membreDb = await _gestMembres.ObtenirMembreParIdAsync(idMembre);
+        //    if (membreDb is null)
+        //        return RedirectToPage("/membres/index");
+        //    MembreOtd = membreDb.Adapt<MembrePourDetailsOtd>();
+        //    return Page();
+        //}
     }
 }

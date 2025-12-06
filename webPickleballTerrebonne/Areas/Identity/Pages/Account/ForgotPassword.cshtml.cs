@@ -26,34 +26,39 @@ namespace webPickleballTerrebonne.Areas.Identity.Pages.Account
             public string Email { get; set; } = string.Empty;
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnGet()
         {
-            if (ModelState.IsValid)
-            {
-                var user = await _userManager.FindByEmailAsync(Input.Email);
-                if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
-                {
-                    // Don't reveal that the user does not exist or is not confirmed
-                    return RedirectToPage("./ForgotPasswordConfirmation");
-                }
-
-                var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                var callbackUrl = Url.Page(
-                    "/Account/ResetPassword",
-                    pageHandler: null,
-                    values: new { area = "Identity", code },
-                    protocol: Request.Scheme);
-
-                await _emailSender.SendEmailAsync(
-                    Input.Email,
-                    "Réinitialiser le mot de passe",
-                    $"Veuillez réinitialiser votre mot de passe en <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>cliquant ici</a>.");
-
-                return RedirectToPage("./ForgotPasswordConfirmation");
-            }
-
-            return Page();
+            return NotFound();
         }
+
+        //public async Task<IActionResult> OnPostAsync()
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = await _userManager.FindByEmailAsync(Input.Email);
+        //        if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+        //        {
+        //            // Don't reveal that the user does not exist or is not confirmed
+        //            return RedirectToPage("./ForgotPasswordConfirmation");
+        //        }
+
+        //        var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+        //        code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+        //        var callbackUrl = Url.Page(
+        //            "/Account/ResetPassword",
+        //            pageHandler: null,
+        //            values: new { area = "Identity", code },
+        //            protocol: Request.Scheme);
+
+        //        await _emailSender.SendEmailAsync(
+        //            Input.Email,
+        //            "Réinitialiser le mot de passe",
+        //            $"Veuillez réinitialiser votre mot de passe en <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>cliquant ici</a>.");
+
+        //        return RedirectToPage("./ForgotPasswordConfirmation");
+        //    }
+
+        //    return Page();
+        //}
     }
 }

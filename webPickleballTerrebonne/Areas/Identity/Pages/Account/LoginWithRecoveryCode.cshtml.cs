@@ -25,46 +25,51 @@ namespace webPickleballTerrebonne.Areas.Identity.Pages.Account
             public string RecoveryCode { get; set; } = string.Empty;
         }
 
-        public async Task<IActionResult> OnGetAsync(string? returnUrl = null)
+        public IActionResult OnGet()
         {
-            // Ensure the user has gone through the username & password screen first
-            var user = await _signInManager.GetTwoFactorAuthenticationUserAsync()
-                ?? throw new InvalidOperationException($"Impossible de charger l'utilisateur de l'authentification à deux facteurs.");
-
-            ReturnUrl = returnUrl;
-
-            return Page();
+            return NotFound();
         }
 
-        public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+        //public async Task<IActionResult> OnGetAsync(string? returnUrl = null)
+        //{
+        //    // Ensure the user has gone through the username & password screen first
+        //    var user = await _signInManager.GetTwoFactorAuthenticationUserAsync()
+        //        ?? throw new InvalidOperationException($"Impossible de charger l'utilisateur de l'authentification à deux facteurs.");
 
-            var user = await _signInManager.GetTwoFactorAuthenticationUserAsync()
-                ?? throw new InvalidOperationException($"Impossible de charger l'utilisateur de l'authentification à deux facteurs.");
+        //    ReturnUrl = returnUrl;
 
-            var recoveryCode = Input.RecoveryCode.Replace(" ", string.Empty);
+        //    return Page();
+        //}
 
-            var result = await _signInManager.TwoFactorRecoveryCodeSignInAsync(recoveryCode);
+        //public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return Page();
+        //    }
 
-            //var userId = await _userManager.GetUserIdAsync(user);
+        //    var user = await _signInManager.GetTwoFactorAuthenticationUserAsync()
+        //        ?? throw new InvalidOperationException($"Impossible de charger l'utilisateur de l'authentification à deux facteurs.");
 
-            if (result.Succeeded)
-            {
-                return LocalRedirect(returnUrl ?? Url.Content("~/"));
-            }
-            if (result.IsLockedOut)
-            {
-                return RedirectToPage("./Lockout");
-            }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "Code de récupération invalide saisi.");
-                return Page();
-            }
-        }
+        //    var recoveryCode = Input.RecoveryCode.Replace(" ", string.Empty);
+
+        //    var result = await _signInManager.TwoFactorRecoveryCodeSignInAsync(recoveryCode);
+
+        //    //var userId = await _userManager.GetUserIdAsync(user);
+
+        //    if (result.Succeeded)
+        //    {
+        //        return LocalRedirect(returnUrl ?? Url.Content("~/"));
+        //    }
+        //    if (result.IsLockedOut)
+        //    {
+        //        return RedirectToPage("./Lockout");
+        //    }
+        //    else
+        //    {
+        //        ModelState.AddModelError(string.Empty, "Code de récupération invalide saisi.");
+        //        return Page();
+        //    }
+        //}
     }
 }

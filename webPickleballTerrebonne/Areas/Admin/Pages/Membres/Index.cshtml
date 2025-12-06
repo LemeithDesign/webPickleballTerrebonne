@@ -5,20 +5,7 @@
 }
 <div class="container">
     <h2>Liste des membres</h2>
-
-
-
     <form method="get">
-
-        @*         <div class="form-actions no-color">
-            <p>
-                Find by name:
-                <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-                <input type="submit" value="Search" class="btn btn-primary" /> |
-                <a asp-page="./Index">Back to full List</a>
-            </p>
-        </div> *@
-
         <div class="row g-2 d-flex justify-content-end">
             <div class="col-auto">
                 <input type="text" name="SearchString" value="@Model.CurrentFilter" class="form-control" placeholder="Rechercher par nom" />
@@ -30,8 +17,32 @@
         <div class="d-flex justify-content-end mb-3">
             <a asp-area="admin" asp-page="/membres/index" class="text-black">Afficher la liste complète</a>
         </div>
-
     </form>
+
+    <div>
+        <div class="row">
+            <div class="col-md-1">
+                <a asp-area="admin" asp-page="/membres/index" asp-route-sortOrder="@Model.TrierNom" class="text-decoration-none text-black">Nom</a>
+            </div>
+            <div class="col-1">
+                <a asp-area="admin" asp-page="/membres/index" asp-route-sortOrder="@Model.TrierPrenom" class="text-decoration-none text-black">Prénom</a>
+            </div>
+            <div class="col-1">
+                Actif
+            </div>
+            <div class="col-1">
+                <a asp-area="admin" asp-page="/membres/index" asp-route-sortOrder="@Model.TrierDate" class="text-decoration-none text-black">Depuis</a>
+            </div>
+            <div class="col-1">
+                Rôle
+            </div>
+            <div class="col-5">
+            </div>
+            <div class="col-2">
+                <a class="btn btn-outline-dark" asp-area="admin" asp-page="/membres/creer">Ajouter un membre</a>
+            </div>
+        </div>
+    </div>
 
     <table class="table table-sm align-middle">
         <thead>

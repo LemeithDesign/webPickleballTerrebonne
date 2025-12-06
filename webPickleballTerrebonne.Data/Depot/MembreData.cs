@@ -1,5 +1,4 @@
-﻿using Humanizer;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using webPickleballTerrebonne.Data.Contexts;
 using webPickleballTerrebonne.Data.Entites;
@@ -30,11 +29,11 @@ namespace webPickleballTerrebonne.Data.Depot
         #endregion Supprimer
     }
 
-    public class MembreData(UserManager<ApplicationUser> userManage, DataContext context) : IMembreData
+    public class MembreData(UserManager<ApplicationUser> userManager, DataContext context) : IMembreData
     {
         #region Base
         private readonly DataContext _context = context;
-        private readonly UserManager<ApplicationUser> _userManager = userManage;
+        private readonly UserManager<ApplicationUser> _userManager = userManager;
         public async Task<bool> SauvegarderAsync()
         {
             return (await _context.SaveChangesAsync() >= 0);

@@ -16,14 +16,16 @@ namespace webPickleballTerrebonne.Pages.PlagesHoraires
 
         public PlageHorairePourDetailOtd PlageHoraireOtd { get; private set; } = default!;
 
-        public async Task OnGetAsync()
-        {
-            PlageHoraire? plageHoraireDb = await _gestPlagesHoraires.ObtenirPlageHoraireParId(IdPlageHoraire);
-            if (plageHoraireDb is null)
-            {
-                return;
-            }
-            PlageHoraireOtd = plageHoraireDb.Adapt<PlageHorairePourDetailOtd>();
-        }
+        public IActionResult OnGet() => NotFound();
+
+        //public async Task OnGetAsync()
+        //{
+        //    PlageHoraire? plageHoraireDb = await _gestPlagesHoraires.ObtenirPlageHoraireParId(IdPlageHoraire);
+        //    if (plageHoraireDb is null)
+        //    {
+        //        return;
+        //    }
+        //    PlageHoraireOtd = plageHoraireDb.Adapt<PlageHorairePourDetailOtd>();
+        //}
     }
 }

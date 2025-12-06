@@ -3,3 +3,19 @@
 @{
     ViewBag.Title = $"Détails - {Model.PlageHoraireOtd.NomTerrain}";
 }
+<div class="container">
+    <h1>Plages Horaires</h1>
+    <div class="row my-3">
+        <div>@Model.PlageHoraireOtd.Jour</div>
+        <div>@Model.PlageHoraireOtd.HeureDebut</div>
+        <div>@Model.PlageHoraireOtd.NomTerrain</div>
+        <div>@Model.PlageHoraireOtd.Adresse</div>
+        <div>@Model.PlageHoraireOtd.Ville @Model.PlageHoraireOtd.CodePostal</div>
+        <div>@Model.PlageHoraireOtd.NomResponsable</div>
+        <div>Membres réguliers:</div>
+        @foreach (var membre in Model.PlageHoraireOtd.NomsMembresRegulier)
+        {
+            <div>- @membre</div>
+        }
+)
+</div>

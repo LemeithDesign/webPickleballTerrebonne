@@ -201,7 +201,23 @@ namespace webPickleballTerrebonne.Data.Initializer
                 Membre felix = context.Membres.FirstOrDefault(m => m.Prenom == "Félix" && m.Nom == "Séguin")!;
                 Membre isabelle = context.Membres.FirstOrDefault(m => m.Prenom == "Isabelle" && m.Nom == "Passarelli")!;
 
-                List<Membre> membres = new() { felix, isabelle };
+                int qtePlaceMaximale = 21;
+
+                Random rnd = new();
+
+                HashSet<int> membresIds = [felix.Id, isabelle.Id];
+                while (membresIds.Count < qtePlaceMaximale)
+                {
+                    int nombreAleatoire = rnd.Next(0, 53); // Supposant qu'il y a 52 membres
+                    membresIds.Add(nombreAleatoire);
+                }
+
+                List<Membre> membres = [];
+                for (int i = 0; i < membresIds.Count; i++)
+                {
+                    Membre membre = context.Membres.Find(membresIds.ElementAt(i))!;
+                    membres.Add(membre);
+                }
 
                 PlageHoraire plageHoraire = new()
                 {
@@ -209,7 +225,7 @@ namespace webPickleballTerrebonne.Data.Initializer
                     HeureDebut = new TimeOnly(18, 30, 0), // 18h30
                     HeureFin = new TimeOnly(21, 30, 0),   // 21h30
 
-                    QtePlaceMaximale = 21,
+                    QtePlaceMaximale = qtePlaceMaximale,
                     QtePlaceOptimale = 16,
 
                     ResponsableId = felix.Id,
@@ -220,6 +236,24 @@ namespace webPickleballTerrebonne.Data.Initializer
                 };
 
                 await context.PlagesHoraires.AddAsync(plageHoraire);
+                await context.SaveChangesAsync();
+            }
+
+            if (!context.Participations.Any())
+            {
+                PlageHoraire plage = context.PlagesHoraires.First();
+
+                List<Membre> membresInscrits = plage.MembresReguliers;
+
+                Participation participation = new()
+                {
+                    IdPlageHoraire = plage.IdPlageHoraire,
+                    PlageHoraire = plage,
+                    DateParticipation = DateTime.Today,
+                    Participants = membresInscrits
+                };
+
+                context.Participations.Add(participation);
                 await context.SaveChangesAsync();
             }
         }
@@ -247,7 +281,7 @@ namespace webPickleballTerrebonne.Data.Initializer
 
             var random = new Random();
 
-            for (int i = 1; i <= 50; i++)
+            for (int i = 1; i <= 51; i++)
             {
                 var prenom = prenoms[random.Next(prenoms.Length)];
                 var nom = noms[random.Next(noms.Length)];
@@ -338,8 +372,6 @@ namespace webPickleballTerrebonne.Data.Initializer
 
             }
         }
-
-
         private string EnleverAccents(string texte)
         {
             if (string.IsNullOrEmpty(texte))

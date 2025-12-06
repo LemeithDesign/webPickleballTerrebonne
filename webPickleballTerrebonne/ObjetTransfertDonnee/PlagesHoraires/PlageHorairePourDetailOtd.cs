@@ -19,5 +19,6 @@
         // Responbable
         public string NomResponsable { get; set; } = string.Empty;
 
+        public List<string> NomsMembresRegulier { get; set; } = [];
     }
 }

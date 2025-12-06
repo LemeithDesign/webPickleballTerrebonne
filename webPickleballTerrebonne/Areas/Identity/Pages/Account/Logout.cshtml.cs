@@ -9,17 +9,23 @@ namespace webPickleballTerrebonne.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager = signInManager;
 
-        public async Task<IActionResult> OnPost(string? returnUrl = null)
+        public IActionResult OnGet()
         {
-            await _signInManager.SignOutAsync();
-            if (returnUrl != null)
-            {
-                return LocalRedirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToPage();
-            }
+            return NotFound();
         }
+
+
+        //public async Task<IActionResult> OnPost(string? returnUrl = null)
+        //{
+        //    await _signInManager.SignOutAsync();
+        //    if (returnUrl != null)
+        //    {
+        //        return LocalRedirect(returnUrl);
+        //    }
+        //    else
+        //    {
+        //        return RedirectToPage();
+        //    }
+        //}
     }
 }

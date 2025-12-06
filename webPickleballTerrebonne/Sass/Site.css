@@ -28,23 +28,23 @@
   font-weight: normal;
   font-style: normal; }
 
-/*@font-face {
+@font-face {
   font-family: 'Material Icons';
   src: url("../../fonts/MaterialIcons-Regular.ttf") format("truetype");
   font-weight: normal;
-  font-style: normal; }*/
+  font-style: normal; }
 
-/*@font-face {
+@font-face {
   font-family: 'Material Icons Outlined Regular';
   src: url("../../fonts/MaterialIconsOutlined-Regular.otf") format("truetype");
   font-weight: normal;
-  font-style: normal; }*/
+  font-style: normal; }
 
-/*@font-face {
+@font-face {
   font-family: 'Material Icons Two Tones';
   src: url("../../fonts/MaterialIconsTwoTone-Regular.otf") format("truetype");
   font-weight: normal;
-  font-style: normal; }*/
+  font-style: normal; }
 
 body {
   background-color: #F6F5F9; }

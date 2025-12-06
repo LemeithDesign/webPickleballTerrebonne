@@ -1,4 +1,5 @@
 using Mapster;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using webPickleballTerrebonne.Data.Depot;
 using webPickleballTerrebonne.Data.Entites;
@@ -12,15 +13,17 @@ namespace webPickleballTerrebonne.Pages.PlagesHoraires
 
         public Dictionary<DayOfWeek, List<PlageHorairePourIndexOtd>>? PlagesHorairesOtd { get; set; }
 
-        public async Task OnGetAsync()
-        {
-            List<PlageHoraire> lsPlagesHoraires = await _gestPlagesHoraires.ObtenirPlagesHoraires();
+        public IActionResult OnGet() => NotFound();
 
-            List<PlageHorairePourIndexOtd> lsPlagesHorairesOtd = lsPlagesHoraires.Adapt<List<PlageHorairePourIndexOtd>>();
+        //public async Task OnGetAsync()
+        //{
+        //    List<PlageHoraire> lsPlagesHoraires = await _gestPlagesHoraires.ObtenirPlagesHoraires();
 
-            PlagesHorairesOtd = lsPlagesHorairesOtd
-                .GroupBy(s => s.Jour)
-                .ToDictionary(g => g.Key, g => g.OrderBy(s => s.HeureDebut).ToList());
-        }
+        //    List<PlageHorairePourIndexOtd> lsPlagesHorairesOtd = lsPlagesHoraires.Adapt<List<PlageHorairePourIndexOtd>>();
+
+        //    PlagesHorairesOtd = lsPlagesHorairesOtd
+        //        .GroupBy(s => s.Jour)
+        //        .ToDictionary(g => g.Key, g => g.OrderBy(s => s.HeureDebut).ToList());
+        //}
     }
 }

@@ -16,22 +16,28 @@ namespace webPickleballTerrebonne.Areas.Admin.Pages.Membres
 
         public MembrePourSupprimerOtd MembreOtd { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync()
+
+        public IActionResult OnGet()
         {
-            Membre? membreDb = await _gestMembres.ObtenirMembreParIdAsync(idMembre);
-            if (membreDb is null)
-                return RedirectToPage("/membres/index");
-            MembreOtd = membreDb.Adapt<MembrePourSupprimerOtd>();
-            return Page();
+            return NotFound();
         }
 
-        public async Task<IActionResult> OnPostAsync()
-        {
-            Membre? membreDb = await _gestMembres.ObtenirMembreParIdAsync(idMembre);
-            if (membreDb is null)
-                return RedirectToPage("/membres/index");
-            await _gestMembres.SupprimerMembreAsync(membreDb);
-            return RedirectToPage("/membres/index");
-        }
+        //public async Task<IActionResult> OnGetAsync()
+        //{
+        //    Membre? membreDb = await _gestMembres.ObtenirMembreParIdAsync(idMembre);
+        //    if (membreDb is null)
+        //        return RedirectToPage("/membres/index");
+        //    MembreOtd = membreDb.Adapt<MembrePourSupprimerOtd>();
+        //    return Page();
+        //}
+
+        //public async Task<IActionResult> OnPostAsync()
+        //{
+        //    Membre? membreDb = await _gestMembres.ObtenirMembreParIdAsync(idMembre);
+        //    if (membreDb is null)
+        //        return RedirectToPage("/membres/index");
+        //    await _gestMembres.SupprimerMembreAsync(membreDb);
+        //    return RedirectToPage("/membres/index");
+        //}
     }
 }

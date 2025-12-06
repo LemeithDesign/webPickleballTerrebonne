@@ -4,14 +4,14 @@ using webPickleballTerrebonne.Data.Entites;
 
 namespace webPickleballTerrebonne.Data.Depot
 {
-    public interface IPlageHoraireData
+
+    public interface IParticipationData
     {
         #region Base
-        //Task<bool> SauvegarderAsync();
+        Task<bool> SauvegarderAsync();
         #endregion Base
         #region Obtenir
-        Task<List<PlageHoraire>> ObtenirPlagesHoraires();
-        Task<PlageHoraire?> ObtenirPlageHoraireParId(int idPlageHoraire);
+        Task<List<Participation>> ObtenirParticipationsAsync();
         #endregion Obtenir
         #region Créer
         #endregion Créer
@@ -20,7 +20,7 @@ namespace webPickleballTerrebonne.Data.Depot
         #region Supprimer
         #endregion Supprimer
     }
-    public class PlageHoraireData(DataContext context) : IPlageHoraireData
+    public class ParticipationData(DataContext context) : IParticipationData
     {
         #region Base
         private readonly DataContext _context = context;
@@ -30,19 +30,12 @@ namespace webPickleballTerrebonne.Data.Depot
         }
         #endregion Base
         #region Obtenir
-        public async Task<List<PlageHoraire>> ObtenirPlagesHoraires()
+        public async Task<List<Participation>> ObtenirParticipationsAsync()
         {
-            return await _context.PlagesHoraires
-                .Include(s => s.Terrain)
+            return await _context.Participations
+                .Include(p => p.PlageHoraire.Terrain)
+                .Include(p => p.PlageHoraire)
                 .ToListAsync();
-        }
-        public async Task<PlageHoraire?> ObtenirPlageHoraireParId(int idPlageHoraire)
-        {
-            return await _context.PlagesHoraires
-                .Include(s => s.Terrain)
-                .Include(s => s.Responsable)
-                .Include(s => s.MembresReguliers)
-                .FirstOrDefaultAsync(s => s.IdPlageHoraire == idPlageHoraire);
         }
         #endregion Obtenir
         #region Créer

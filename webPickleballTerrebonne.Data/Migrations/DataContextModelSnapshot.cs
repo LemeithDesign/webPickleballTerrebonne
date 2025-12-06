@@ -17,6 +17,21 @@ namespace webPickleballTerrebonne.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.20");
 
+            modelBuilder.Entity("MembreParticipation", b =>
+                {
+                    b.Property<int>("ParticipantsId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ParticipationsIdParticipation")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ParticipantsId", "ParticipationsIdParticipation");
+
+                    b.HasIndex("ParticipationsIdParticipation");
+
+                    b.ToTable("MembreParticipation");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -313,24 +328,16 @@ namespace webPickleballTerrebonne.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool?>("EstPresent")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("IdMembre")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("DateParticipation")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("IdPlageHoraire")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("MembreId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("PlageHoraireIdPlageHoraire")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("IdParticipation");
-
-                    b.HasIndex("MembreId");
 
                     b.HasIndex("PlageHoraireIdPlageHoraire");
 
@@ -408,6 +415,21 @@ namespace webPickleballTerrebonne.Data.Migrations
                     b.ToTable("Terrains");
                 });
 
+            modelBuilder.Entity("MembreParticipation", b =>
+                {
+                    b.HasOne("webPickleballTerrebonne.Data.Entites.Membre", null)
+                        .WithMany()
+                        .HasForeignKey("ParticipantsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("webPickleballTerrebonne.Data.Entites.Participation", null)
+                        .WithMany()
+                        .HasForeignKey("ParticipationsIdParticipation")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -479,19 +501,11 @@ namespace webPickleballTerrebonne.Data.Migrations
 
             modelBuilder.Entity("webPickleballTerrebonne.Data.Entites.Participation", b =>
                 {
-                    b.HasOne("webPickleballTerrebonne.Data.Entites.Membre", "Membre")
-                        .WithMany("Participations")
-                        .HasForeignKey("MembreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("webPickleballTerrebonne.Data.Entites.PlageHoraire", "PlageHoraire")
                         .WithMany("Participations")
                         .HasForeignKey("PlageHoraireIdPlageHoraire")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Membre");
 
                     b.Navigation("PlageHoraire");
                 });
@@ -519,8 +533,6 @@ namespace webPickleballTerrebonne.Data.Migrations
                 {
                     b.Navigation("ApplicationUser")
                         .IsRequired();
-
-                    b.Navigation("Participations");
                 });
 
             modelBuilder.Entity("webPickleballTerrebonne.Data.Entites.PlageHoraire", b =>

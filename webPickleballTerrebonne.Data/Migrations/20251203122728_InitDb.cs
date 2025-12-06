@@ -158,6 +158,18 @@ namespace webPickleballTerrebonne.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MembreParticipation",
+                columns: table => new
+                {
+                    ParticipantsId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ParticipationsIdParticipation = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MembreParticipation", x => new { x.ParticipantsId, x.ParticipationsIdParticipation });
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Membres",
                 columns: table => new
                 {
@@ -223,21 +235,13 @@ namespace webPickleballTerrebonne.Data.Migrations
                 {
                     IdParticipation = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    DateParticipation = table.Column<DateTime>(type: "TEXT", nullable: false),
                     IdPlageHoraire = table.Column<int>(type: "INTEGER", nullable: false),
-                    PlageHoraireIdPlageHoraire = table.Column<int>(type: "INTEGER", nullable: false),
-                    IdMembre = table.Column<int>(type: "INTEGER", nullable: false),
-                    MembreId = table.Column<int>(type: "INTEGER", nullable: false),
-                    EstPresent = table.Column<bool>(type: "INTEGER", nullable: true)
+                    PlageHoraireIdPlageHoraire = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Participations", x => x.IdParticipation);
-                    table.ForeignKey(
-                        name: "FK_Participations_Membres_MembreId",
-                        column: x => x.MembreId,
-                        principalTable: "Membres",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Participations_PlagesHoraires_PlageHoraireIdPlageHoraire",
                         column: x => x.PlageHoraireIdPlageHoraire,
@@ -290,14 +294,14 @@ namespace webPickleballTerrebonne.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_MembreParticipation_ParticipationsIdParticipation",
+                table: "MembreParticipation",
+                column: "ParticipationsIdParticipation");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Membres_PlageHoraireIdPlageHoraire",
                 table: "Membres",
                 column: "PlageHoraireIdPlageHoraire");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Participations_MembreId",
-                table: "Participations",
-                column: "MembreId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Participations_PlageHoraireIdPlageHoraire",
@@ -347,6 +351,22 @@ namespace webPickleballTerrebonne.Data.Migrations
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
+                name: "FK_MembreParticipation_Membres_ParticipantsId",
+                table: "MembreParticipation",
+                column: "ParticipantsId",
+                principalTable: "Membres",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_MembreParticipation_Participations_ParticipationsIdParticipation",
+                table: "MembreParticipation",
+                column: "ParticipationsIdParticipation",
+                principalTable: "Participations",
+                principalColumn: "IdParticipation",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
                 name: "FK_Membres_PlagesHoraires_PlageHoraireIdPlageHoraire",
                 table: "Membres",
                 column: "PlageHoraireIdPlageHoraire",
@@ -377,13 +397,16 @@ namespace webPickleballTerrebonne.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Participations");
+                name: "MembreParticipation");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Participations");
 
             migrationBuilder.DropTable(
                 name: "Membres");

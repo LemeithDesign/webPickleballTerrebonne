@@ -22,32 +22,37 @@ namespace webPickleballTerrebonne.Areas.Admin.Pages.Membres
 
         public IEnumerable<SelectListItem> RolesDisponibles { get; private set; } = default!;
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            RolesDisponibles = NomsRoles.Roles.Select(r => new SelectListItem { Value = r, Text = r });
+            return NotFound();
         }
 
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (ModelState.IsValid)
-            {
-                Membre membreDb = MembreOtd.Adapt<Membre>();
-                int idMembre = await _gestMembres.CreerMembreAsync(membreDb);
+        //public void OnGet()
+        //{
+        //    RolesDisponibles = NomsRoles.Roles.Select(r => new SelectListItem { Value = r, Text = r });
+        //}
 
-                ApplicationUser user = Activator.CreateInstance<ApplicationUser>();
-                await _userStore.SetUserNameAsync(user, MembreOtd.Courriel, CancellationToken.None);
+        //public async Task<IActionResult> OnPostAsync()
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        Membre membreDb = MembreOtd.Adapt<Membre>();
+        //        int idMembre = await _gestMembres.CreerMembreAsync(membreDb);
 
-                user.Membre = membreDb;
-                user.MembreId = idMembre;
-                user.Email = MembreOtd.Courriel;
-                user.MembreActif = false;
-                // Pour tests:
-                user.EmailConfirmed = true;
-                //membreDb.DateMembreActif = DateTime.Now;
+        //        ApplicationUser user = Activator.CreateInstance<ApplicationUser>();
+        //        await _userStore.SetUserNameAsync(user, MembreOtd.Courriel, CancellationToken.None);
 
-                await _userManager.CreateAsync(user, MembreOtd.Password);
-            }
-            return RedirectToPage("Index");
-        }
+        //        user.Membre = membreDb;
+        //        user.MembreId = idMembre;
+        //        user.Email = MembreOtd.Courriel;
+        //        user.MembreActif = false;
+        //        // Pour tests:
+        //        user.EmailConfirmed = true;
+        //        //membreDb.DateMembreActif = DateTime.Now;
+
+        //        await _userManager.CreateAsync(user, MembreOtd.Password);
+        //    }
+        //    return RedirectToPage("Index");
+        //}
     }
 }

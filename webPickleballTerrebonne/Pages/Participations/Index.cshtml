@@ -1,0 +1,44 @@
+﻿@page
+@using System.Globalization
+@using webPickleballTerrebonne.ObjetTransfertDonnee.Participations
+@model webPickleballTerrebonne.Pages.Participations.IndexModel
+@{
+    ViewBag.Title = "Liste des participations";
+}
+<div class="container">
+    <div class="row my-3">
+        @if (Model.Semaine is null || Model.Semaine.Count == 0)
+        {
+            <div>Aucune activité.</div>
+        }
+        else
+        {
+
+
+
+
+            @foreach (DateTime jour in Model.Semaine.Keys)
+            {
+                var isLast = jour.DayOfWeek == DayOfWeek.Saturday;
+                var participations = Model.Semaine.ContainsKey(jour) ? Model.Semaine[jour] : new List<ParticipationPourIndexOtd>();
+                <div class="col-md @(isLast ? "" : "border-md-end")">
+                    <div class="text-center mb-3">
+                        <div>@CultureInfo.CurrentCulture.TextInfo.ToTitleCase(CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(jour.DayOfWeek))</div>
+                        <div>@jour.ToLongDateString()</div>
+                    </div>
+                    @foreach (var participation in participations)
+                    {
+                        <a asp-page="/PlagesHoraires/Details" asp-route-IdPlageHoraire="@participation.IdParticipation" class="text-decoration-none">
+                            <div class="card p-3">
+                                <strong>@participation.HeureDebut</strong>
+                                <div>
+                                    @participation.Terrain
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+            }
+        }
+    </div>
+</div>

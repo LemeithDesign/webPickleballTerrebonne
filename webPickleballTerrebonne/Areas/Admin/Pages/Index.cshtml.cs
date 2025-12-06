@@ -5,8 +5,11 @@ namespace webPickleballTerrebonne.Areas.Admin.Pages
 {
     public class IndexModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            return NotFound();
         }
+        //public void OnGet()
+        //{ }
     }
 }

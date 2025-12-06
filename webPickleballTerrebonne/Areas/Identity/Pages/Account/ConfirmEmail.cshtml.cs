@@ -13,24 +13,26 @@ namespace webPickleballTerrebonne.Areas.Identity.Pages.Account
 
         [TempData]
         public string StatusMessage { get; set; } = string.Empty;
+        
+        public IActionResult OnGet() => NotFound();
 
-        public async Task<IActionResult> OnGetAsync(string userId, string code)
-        {
-            if (userId == null || code == null)
-            {
-                return RedirectToPage("/Index");
-            }
+        //public async Task<IActionResult> OnGetAsync(string userId, string code)
+        //{
+        //    if (userId == null || code == null)
+        //    {
+        //        return RedirectToPage("/Index");
+        //    }
 
-            var user = await _userManager.FindByIdAsync(userId);
-            if (user == null)
-            {
-                return NotFound($"Impossible de charger l'utilisateur avec l'ID '{userId}'.");
-            }
+        //    var user = await _userManager.FindByIdAsync(userId);
+        //    if (user == null)
+        //    {
+        //        return NotFound($"Impossible de charger l'utilisateur avec l'ID '{userId}'.");
+        //    }
 
-            code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
-            var result = await _userManager.ConfirmEmailAsync(user, code);
-            StatusMessage = result.Succeeded ? "Merci d'avoir confirmé votre adresse courriel." : "Erreur lors de la confirmation de votre adresse courriel.";
-            return Page();
-        }
+        //    code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
+        //    var result = await _userManager.ConfirmEmailAsync(user, code);
+        //    StatusMessage = result.Succeeded ? "Merci d'avoir confirmé votre adresse courriel." : "Erreur lors de la confirmation de votre adresse courriel.";
+        //    return Page();
+        //}
     }
 }
