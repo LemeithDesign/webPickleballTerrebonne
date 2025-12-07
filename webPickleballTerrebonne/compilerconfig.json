@@ -1,7 +1,7 @@
 ﻿[
   {
     "outputFile": "wwwroot/css/Site.min.css",
-    "inputFile": "Sass/Site.scss",
+    "inputFile": "Sass/Site/Site.scss",
     "minify": {
       "enabled": true,
       "renameLocals": true
@@ -10,8 +10,8 @@
     "sourceMap": true
   },
   {
-    "outputFile": "Sass/Site.css",
-    "inputFile": "Sass/Site.scss",
+    "outputFile": "Sass/site.css",
+    "inputFile": "Sass/Site/Site.scss",
     "minify": {
       "enabled": false
     },
@@ -28,8 +28,26 @@
     "sourceMap": true
   },
   {
-    "outputFile": "Sass/Formulaire/form.css",
+    "outputFile": "Sass/form.css",
     "inputFile": "Sass/Formulaire/Formulaire.scss",
+    "minify": {
+      "enabled": false
+    },
+    "includeInProject": false
+  },
+  {
+    "outputFile": "wwwroot/css/acceuil.min.css",
+    "inputFile": "Sass/Acceuil/Acceuil.scss",
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "includeInProject": true,
+    "sourceMap": true
+  },
+  {
+    "outputFile": "Sass/Acceuil.css",
+    "inputFile": "Sass/Acceuil/Acceuil.scss",
     "minify": {
       "enabled": false
     },

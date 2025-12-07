@@ -1,48 +1,48 @@
 ﻿@font-face {
   font-family: 'Roboto-Regular';
-  src: url("../../fonts/Roboto-Regular.ttf") format("truetype");
+  src: url("../fonts/Roboto-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'BarlowCondensed-Bold';
-  src: url("../../fonts/BarlowCondensed-Bold.ttf") format("truetype");
+  src: url("../fonts/BarlowCondensed-Bold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'BarlowCondensed';
-  src: url("../../fonts/BarlowCondensed-Regular.ttf") format("truetype");
+  src: url("../fonts/BarlowCondensed-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'DMSans-Bold';
-  src: url("../../fonts/DMSans-Bold.ttf") format("truetype");
+  src: url("../fonts/DMSans-Bold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'DMSans';
-  src: url("../../fonts/DMSans-Regular.ttf") format("truetype");
+  src: url("../fonts/DMSans-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'Material Icons';
-  src: url("../../fonts/MaterialIcons-Regular.ttf") format("truetype");
+  src: url("../fonts/MaterialIcons-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'Material Icons Outlined Regular';
-  src: url("../../fonts/MaterialIconsOutlined-Regular.otf") format("truetype");
+  src: url("../fonts/MaterialIconsOutlined-Regular.otf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'Material Icons Two Tones';
-  src: url("../../fonts/MaterialIconsTwoTone-Regular.otf") format("truetype");
+  src: url("../fonts/MaterialIconsTwoTone-Regular.otf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 

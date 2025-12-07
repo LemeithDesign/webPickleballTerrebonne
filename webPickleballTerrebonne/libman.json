@@ -31,14 +31,21 @@
       ]
     },
     {
-      "provider": "cdnjs",
       "library": "bootstrap@5.3.8",
       "destination": "wwwroot/lib/bootstrap/",
       "files": [
         "css/bootstrap.min.css",
         "css/bootstrap.min.css.map",
         "js/bootstrap.bundle.min.js",
-        "js/bootstrap.bundle.min.js.map",
+        "js/bootstrap.bundle.min.js.map"
+      ]
+    },
+    {
+      "library": "gsap@3.13.0",
+      "destination": "wwwroot/lib/gsap/",
+      "files": [
+        "gsap.min.js",
+        "gsap.min.js.map"
       ]
     }
   ]
