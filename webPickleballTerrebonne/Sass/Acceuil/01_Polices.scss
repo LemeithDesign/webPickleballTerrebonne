@@ -4,3 +4,24 @@
     font-weight: 400;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url('../../fonts/Montserrat-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DMSans-Bold';
+    src: url('../../fonts/DMSans-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DMSans';
+    src: url('../../fonts/DMSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

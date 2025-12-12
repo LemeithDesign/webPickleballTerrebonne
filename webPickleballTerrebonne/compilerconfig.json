@@ -46,7 +46,8 @@
     "sourceMap": true
   },
   {
-    "outputFile": "Sass/Acceuil.css",
+    "outputFile": "wwwroot/css/acceuil.css",
+    //"outputFile": "Sass/acceuil.css",
     "inputFile": "Sass/Acceuil/Acceuil.scss",
     "minify": {
       "enabled": false

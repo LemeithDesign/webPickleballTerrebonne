@@ -14,8 +14,10 @@
 }
 
 .pbtImageTxt {
-    font-family: $pbtFontText;
     /*position: absolute;*/
+    font-family: $wpFontText;
+    text-align: right;
+    line-height: 0.8;
     /*top: 50%;*/
     /*left: 50%;*/
     /*transform: translate(-50%, -50%);*/
