@@ -1,4 +1,4 @@
-﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-body-tertiary shadow p-0">
+﻿<nav class="navbar fixed-top navbar-expand-sm navbar-toggleable-sm bg-body-tertiary shadow p-0">
     <div class="container">
         <a class="navbar-brand p-0 m-0" href="https://pickleballterrebonne.com">
             <img class="m-0 p-0" src="~/images/logo-club-pickleball-terrebonne_rgb.svg" height="110" alt="logo_pickleballTerrebonne" />
@@ -7,7 +7,13 @@
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link active" aria-current="page" asp-page="index">Acceuil</a>
+                <a class="nav-link" asp-page="Photos">Photos</a>
+                @* <a class="nav-link" href="#">Pricing</a> *@
+            </div>
+        </div>
         @* <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
             <partial name="_LoginPartial" />
         </div> *@

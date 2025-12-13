@@ -5,28 +5,69 @@
 }
 
 @section ScriptsEntete {
-    <link href="~/css/acceuil.css" rel="stylesheet" />
-    @* <link href="~/css/acceuil.min.css" rel="stylesheet" /> *@
+    <link href="~/css/acceuil.min.css" rel="stylesheet" />
 }
-
 
 <div class="container">
     <div class="pbtImage mt-5">
         <img class="pbtImageBg img-fluid" src="~/images/accueil/parc-vignobles.png" alt="Parc des Vignobles" />
+        @* <div class="pbtBalle"> *@
+        @* <img src="~/images/pickleball.svg" /> *@
+        @* </div> *@
         <div class="pbtImageTxt">
-            <div style="line-height: 1;">Club de Pickleball</div>
-            <div style="line-height: 1;">Terrebonne inc.</div>
+            <div>Club de Pickleball</div>
+            <div>Terrebonne inc.</div>
         </div>
     </div>
-
-
-    @* <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p> *@
+    <div class="align-content-center my-3 text-center">
+        <h2 class="my-3">Partenaire principale</h2>
+    </div>
+    <a href="https://terrebonne.ca/pickleball-interieur-et-exterieur/" style="text-decoration: none; color:inherit;">
+        <div class="border border-2 border-black bg-white align-content-center my-3 text-center">
+            <div class="mt-3">
+                <img class="img-fluid w-50" src="~/images/accueil/terrebonne-horizonale.png" />
+            </div>
+            <div class="my-3">Service des loisirs de la Ville de Terrebonne</div>
+        </div>
+    </a>
+    <div class="align-content-center my-3 text-center">
+        <h2 class="my-3">Partenaires</h2>
+    </div>
+    <a href="https://marcottesports.com/" style="text-decoration: none; color:inherit;">
+        <div class="border border-2 border-black bg-white align-content-center my-3 text-center">
+            <div class="mt-3">
+                <img class="img-fluid w-50" src="~/images/accueil/marcotte-sports.bmp" />
+            </div>
+            <div class="my-3">Un rabais sera accordé, sur présentation de votre carte de membre du Club (photo acceptée), sur la marchandise à prix courant.</div>
+        </div>
+    </a>
+    <a href="https://cliniqueactive.com/" style="text-decoration: none; color:inherit;">
+        <div class="border border-2 border-black bg-white align-content-center my-3 text-center">
+            <div class="mt-3">
+                <img class="img-fluid w-50" src="~/images/accueil/clinique active.png" />
+            </div>
+            <div class="my-3">Sur présentation de votre carte de membre du club, vous n'aurez pas de frais pour l'évaluation ainsi qu'un rabais de 10% sur tous les services.</div>
+        </div>
+    </a>
+    <a href="https://www.royallepage.ca/fr/agent/quebec/mascouche/melanie-rioux/82396/" style="text-decoration: none; color:inherit;">
+        <div class="border border-2 border-black bg-white align-content-center my-3 text-center">
+            <div class="mt-3">
+                <img class="img-fluid w-50" src="~/images/accueil/royal lepage - melanie rioux.png" />
+            </div>
+            <div class="my-3">Cliquez sur l'image pour plus d'informations.</div>
+        </div>
+    </a>
+    <a href="https://www.centreflexe.ca/" style="text-decoration: none; color:inherit;">
+        <div class="border border-2 border-black bg-white align-content-center my-3 text-center">
+            <div class="mt-3">
+                <img class="img-fluid w-50" src="~/images/accueil/acupuncture_centre_flexe_logo.png" />
+            </div>
+            <div class="my-3">Sur présentation de votre carte de membre du club, les frais d’ouverture de dossier sont offerts. De plus, profitez d’un rabais de 10 $ sur un traitement d’acupuncture. Cliquez sur l’image pour en savoir davantage sur notre clinique.</div>
+        </div>
+    </a>
 </div>
-
-
 
 @section ScriptsPied {
     <script src="~/lib/gsap/gsap.min.js"></script>
-    <script src="~/js/acceuil/animation.js"></script>
+    <script src="~/js/acceuil/animation.min.js"></script>
 }

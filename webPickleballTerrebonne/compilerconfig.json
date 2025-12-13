@@ -53,5 +53,15 @@
       "enabled": false
     },
     "includeInProject": false
+  },
+  {
+    "outputFile": "wwwroot/js/Acceuil/animation.min.js",
+    "inputFile": "wwwroot/js/Acceuil/Animation.js",
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "includeInProject": true,
+    "sourceMap": true
   }
 ]
